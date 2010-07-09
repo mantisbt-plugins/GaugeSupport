@@ -1,0 +1,50 @@
+<?php
+/*
+	Gauge Support - a MantisBT plugin allowing users to express their stance on individual issues.
+	Copyright (C) 2010  Charly Kiendl
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// Überschriften allgemein
+$s_plugin_GaugeSupport_menu_link = '{project} Angelegenheitsunterst&uuml;tzungsrangliste'; // Deutsch ist schon geil xD
+$s_plugin_GaugeSupport_block_title = 'R&uuml;ckhalt in der Gemeinschaft';
+$s_plugin_GaugeSupport_ranking_title = 'Angelegenheitsunterst&uuml;tzungsrangliste f&uuml;r {project}';
+$s_plugin_GaugeSupport_ranking_pos_title = 'Meist-Unterst&uuml;tzte {project} Angelegenheiten';
+$s_plugin_GaugeSupport_ranking_neg_title = 'Geringst-Unterst&uuml;tzte {project} Angelegenheiten';
+
+// Unterstützer / Gegner
+$s_plugin_GaugeSupport_supporters = 'Unterst&uuml;tzer';
+$s_plugin_GaugeSupport_opponents = 'Gegner';
+$s_plugin_GaugeSupport_no_supporters = 'Niemand unterst&uuml;tzt diese Angelegenheit bisher explizit.';
+$s_plugin_GaugeSupport_no_opponents = 'Niemand lehnt diese Angelegenheit bisher explizit ab.';
+
+// Abstimmung
+$s_plugin_GaugeSupport_submit_text = 'Verk&uuml;nde deine Haltung!';
+$s_plugin_GaugeSupport_do_it_now = 'Starke Unterst&uuml;tzung';
+$s_plugin_GaugeSupport_do_it_later = 'Eher daf&uuml;r';
+$s_plugin_GaugeSupport_do_it_last = 'Eher dagegen';
+$s_plugin_GaugeSupport_do_it_never = 'Starke Ablehnung';
+$s_plugin_GaugeSupport_already_resolved = 'Diese Angelegenheit ist bereits als erledigt markiert.<br>Wenn Sie der Meinung sind, dies sei nicht der Fall, &ouml;ffnen Sie sie bitte wieder und erkl&auml;ren Sie, warum.';
+
+// ranking
+$s_plugin_GaugeSupport_sup_sta_dis = 'Unterst&uuml;tzungsverteilung';
+$s_plugin_GaugeSupport_ACS_abbr = 'AGU';
+$s_plugin_GaugeSupport_ACS_elab = 'Absolute Gemeinschaftsunterst&uuml;tzung';
+$s_plugin_GaugeSupport_ASPU_abbr = 'DUN';
+$s_plugin_GaugeSupport_ASPU_elab = 'Durchschnittliche Unterst&uuml;tzung pro Nutzer';
+$s_plugin_GaugeSupport_show_all_pos = 'Zeige alle {project} Angelegenheiten, meist-unterst&uuml;tzte zuerst';
+$s_plugin_GaugeSupport_show_all_neg = 'Zeige alle {project} Angelegenheiten, geringst-unterst&uuml;tzte zuerst';
+
+?>

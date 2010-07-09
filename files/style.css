@@ -1,0 +1,73 @@
+/*
+	Gauge Support - a MantisBT plugin allowing users to express their stance on individual issues.
+	Copyright (C) 2010  Charly Kiendl
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+/* Gauge Support style */
+.support_option {
+	font-weight: bold;
+}
+.support_form {
+	text-align: center;
+}
+table.support_result_table td {
+	text-align: center;
+}
+table.support_result_table td.bugname {
+	text-align: left;
+}
+.support_result_stances {
+	border-spacing: 0px;
+	border: 1px solid #888888;
+	text-transform: uppercase;
+	color: #111111;
+}
+.support_result_stances td {
+	padding: 0px;
+}
+.support_result_full_support {
+	background-color: #14D100;
+	background-image: -moz-linear-gradient(top, #9AE83A, #14D100);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#9AE83A), to(#14D100));
+	font-size: xx-small;
+}
+.support_result_support {
+	background-color: #A2EF00;
+	background-image: -moz-linear-gradient(top, #A9F71E, #52DF00);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#A9F71E), to(#52DF00));
+	font-size: xx-small;
+}
+.support_result_little_support {
+	background-color: #FF9000;
+	background-image: -moz-linear-gradient(top, #FFCC40, #FF7000);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FFCC40), to(#FF7000));
+	font-size: xx-small;
+}
+.support_result_no_support {
+	background-color: #FF2814;
+	background-image: -moz-linear-gradient(top, #FF5250, #CC2814);
+	background-image: -webkit-gradient(linear, left top, left bottom, from(#FF5250), to(#CC2814));
+	font-size: xx-small;
+}
+.info {
+	cursor: help;
+}
+.show_all_links {
+	margin-left: auto;
+	margin-right: auto;
+	text-align: right;
+	width: 75%;
+}
