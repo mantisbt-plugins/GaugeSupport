@@ -22,27 +22,17 @@
 	auth_ensure_user_authenticated();
 	if(current_user_is_anonymous() && !ALLOW_ANONS) die();
 	$bugId = gpc_get_int('bugid');
-	$stance = gpc_get_string('stance');
+	$stance = gpc_get_int('stance');
 	
 
 	$dbtable = plugin_table("support_data");
-	$dbquery = "SELECT data FROM {$dbtable} WHERE bugid=".db_param();
-	$dboutput = db_query_bound($dbquery, array($bugId), 1);
-
-	if($dboutput->fields) { // had count() here, but API "helpfully" returns a row "false" x_x
-		$data = unserialize($dboutput->fields['data']);
-		$data[current_user_get_field("id")] = $stance;
-		$dbquery = "UPDATE {$dbtable} SET data=".db_param()." WHERE bugid=".db_param();
-	} else {
-		$data = array(current_user_get_field("id") => $stance);
-		$dbquery = "INSERT INTO {$dbtable} (data, bugid, project) VALUES (".db_param().",".db_param().",".db_param().")";
-	}
-	if(isset($data) && isset($dbquery)) db_query_bound($dbquery, array(serialize($data), $bugId, bug_get_field($bugId, 'project_id')));
+	$dbquery = "INSERT INTO {$dbtable} (bugid, userid, rating) VALUES (".db_param().",".db_param().",".db_param().") ON DUPLICATE KEY UPDATE rating = ".db_param();
+	$dboutput = db_query_bound($dbquery, array($bugId, current_user_get_field("id"), $stance, $stance));
 
 	html_page_top( "Supporting stance for issue #" . $bugId . " submitted");
 	echo '<p style="text-align: center"><strong>Your stance on issue #', $bugId, ' has been saved.</strong> You should be automatically directed back there, if not, <a href="./view.php?id=', $bugId, '">click here to return</a>.</p>';
 	
 	form_security_purge( 'camelot' );
-	print_successful_redirect( './view.php?id=' . $bugId );
+	print_successful_redirect( 'view.php?id=' . $bugId );
 	html_page_bottom();
 ?>

@@ -42,7 +42,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$this->description = 'This plugin gives community members the option to vote for higher or lower development priority of an issue.';
 		$this->page = '';
 
-		$this->version = '0.1';
+		$this->version = '0.14';
 		$this->requires = array(
 			'MantisCore' => '1.2',
 			);
@@ -76,8 +76,8 @@ class GaugeSupportPlugin extends MantisPlugin {
 					plugin_table( "support_data" ),
 					"
 						bugid	I	NOTNULL UNSIGNED PRIMARY,
-						data	XL	NOTNULL,
-						project	I	NOTNULL UNSIGNED
+						userid	I	NOTNULL UNSIGNED PRIMARY,
+						rating	I	NOTNULL SIGNED DEFAULT 0
 					",
 					array( "mysql" => "DEFAULT CHARSET=utf8" )
 				),
@@ -87,30 +87,39 @@ class GaugeSupportPlugin extends MantisPlugin {
 	}
 
 	function renderBugSnippet($p_event, $bugid) {
+		# ABORT CONDITION
+		if(bug_get_field($bugid, 'severity') != FEATURE) return;
+		
 		$dbtable = plugin_table("support_data");
-		$dbquery = "SELECT data FROM {$dbtable} WHERE bugid=$bugid";
+		$dbquery = "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";
 		$dboutput = db_query_bound($dbquery);
 
-		$supporters = "";
-		$opponents = "";
+		$supporters = array();
+		$opponents = array();
 		
 		// this is a bit ugly, but it was the easiest to add it to the existing code.
-		$checked['do_it_now'] = "";
-		$checked['do_it_later'] = "";
-		$checked['do_it_last'] = "";
-		$checked['do_it_never'] = "";
+		$checked[2] = "";
+		$checked[1] = "";
+		$checked[-1] = "";
+		$checked[-2] = "";
 
-		if($dboutput->fields) { // had count() here, but API "helpfully" returns "false" if there are none x_x
-		    $data = unserialize($dboutput->fields['data']);
-			foreach($data as $user => $stance) {
-				(($stance == "do_it_now") || ($stance == "do_it_later"))? $type = &$supporters : $type = &$opponents;
-				$type .= '<a href="./view_user_page.php?id='.$user.'">'.user_get_name($user).'</a> ';
+		if($dboutput->RecordCount() > 0) {
+		    $data = $dboutput->GetArray();
+			
+			foreach($data as $row) {
+				$row_uid = $row['userid'];
+				$row_rating = $row['rating'];
+				($row_rating > 0)? $type = &$supporters : $type = &$opponents;
+				$class = (user_get_field( $row_uid, 'access_level' ) >= DEVELOPER) ? 'dev' : 'normal';
+				array_push($type, '<a href="./view_user_page.php?id='.$row_uid.'" class="'.$class.'">'.user_get_name($row_uid).'</a>');
 				
-				if($user == current_user_get_field('id')) {
-					$checked[$stance] = ' checked="checked"';
+				if($row_uid == current_user_get_field('id')) {
+					$checked[$row_rating] = ' checked="checked"';
 				}
 			}
 		}
+		$supporters = implode(', ', $supporters); # abusing untyped languages 101
+		$opponents = implode(', ', $opponents);
 		if(!strlen($supporters)) $supporters = plugin_lang_get('no_supporters');
 		if(!strlen($opponents)) $opponents = plugin_lang_get('no_opponents');
 
@@ -127,16 +136,17 @@ class GaugeSupportPlugin extends MantisPlugin {
 		if(bug_is_resolved($bugid)) {
 			$form = '<strong>'.plugin_lang_get('already_resolved').'</strong>';
 		} else {
-		$form = current_user_is_anonymous() ? '<strong>Only registered users can voice their support.</strong> <a href="./signup_page.php">Click here to register</a>, or <a href="./login_page.php?return=/view.php?id='.$bugid.'">here to log in</a>.' : <<<FORM
-<form method="POST" action="$submitPage" class="support_form">
-	<p><input type="radio" name="stance" value="do_it_now"$checked[do_it_now]> <span class="support_option">$highPriorityText</span>
-	<input type="radio" name="stance" value="do_it_later"$checked[do_it_later]> <span class="support_option">$normalPriorityText</span>
-	<input type="radio" name="stance" value="do_it_last"$checked[do_it_last]> <span class="support_option">$minimalPriorityText</span>
-	<input type="radio" name="stance" value="do_it_never"$checked[do_it_never]> <span class="support_option">$noPriorityText</span>
-	<input type="hidden" name="bugid" value="$bugid">$formSecurity</p>
-	<p><input type="submit" name="submit" value="$submitText"></p>
-</form>
-FORM;
+			$form_anon = '<strong>Only registered users can voice their support.</strong> <a href="./signup_page.php">Click here to register</a>, or <a href="./login_page.php?return=/view.php?id='.$bugid.'">here to log in</a>.';
+			$form_normal = '<form method="POST" action="'.$submitPage.'" class="support_form">
+	<p><input type="radio" name="stance" value="2"'.$checked[2].'> <span class="support_option">'.$highPriorityText.'</span>
+	<input type="radio" name="stance" value="1"'.$checked[1].'> <span class="support_option">'.$normalPriorityText.'</span>
+	<input type="radio" name="stance" value="-1"'.$checked[-1].'> <span class="support_option">'.$minimalPriorityText.'</span>
+	<input type="radio" name="stance" value="-2"'.$checked[-2].'> <span class="support_option">'.$noPriorityText.'</span>
+	<input type="hidden" name="bugid" value="'.$bugid.'">'.$formSecurity.'</p>
+	<p><input type="submit" name="submit" value="'.$submitText.'"></p>
+</form>';
+			
+			$form = current_user_is_anonymous() ? $form_anon : $form_normal;
 		}
 		$table = <<<TABLEDATA
 <br>
@@ -149,11 +159,11 @@ FORM;
 	</tr>
 	<tr class="row-2">
 		<td class="category" width="100px">$supportersText:</td>
-		<td>$supporters</td>
+		<td class="userlist">$supporters</td>
 	</tr>
 	<tr class="row-1">
 		<td class="category">$opponentsText:</td>
-		<td>$opponents</td>
+		<td class="userlist">$opponents</td>
 	</tr>
 </table>
 TABLEDATA;
