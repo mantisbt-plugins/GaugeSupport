@@ -1,0 +1,54 @@
+<?php
+/*
+	Gauge Support - a MantisBT plugin allowing users to express their stance on individual issues.
+	Copyright (C) 2010  Charly Kiendl
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// general headlines
+$s_plugin_GaugeSupport_menu_link = 'Issue Support Ranking';
+$s_plugin_GaugeSupport_block_title = 'Issue Community Support';
+$s_plugin_GaugeSupport_ranking_title = 'Community Support Ranking for {project} issues';
+$s_plugin_GaugeSupport_ranking_pos_title = 'Highest-Supported {project} Issues';
+$s_plugin_GaugeSupport_ranking_neg_title = 'Lowest-Supported {project} Issues';
+$s_plugin_GaugeSupport_plugin_title		='Community Support Ranking for issues';
+$s_plugin_GaugeSupport_excl_status		='Statusses to exclude from overview';
+$s_plugin_GaugeSupport_incl_severity		='Severities to include in overview';
+$s_plugin_GaugeSupport_excl_resolution		='Resolutions to exclude from overview';
+
+// supporters / opponents
+$s_plugin_GaugeSupport_supporters = 'Supporters';
+$s_plugin_GaugeSupport_opponents = 'Opponents';
+$s_plugin_GaugeSupport_no_supporters = 'No one explicitly supports this issue yet.';
+$s_plugin_GaugeSupport_no_opponents = 'No one explicitly opposes this issue yet.';
+
+// voting
+$s_plugin_GaugeSupport_submit_text = 'Declare your stance!';
+$s_plugin_GaugeSupport_do_it_now = 'strong support ';
+$s_plugin_GaugeSupport_do_it_later = 'inclined in favor ';
+$s_plugin_GaugeSupport_do_it_last = 'inclined against it ';
+$s_plugin_GaugeSupport_do_it_never = 'strong rejection ';
+$s_plugin_GaugeSupport_already_resolved = 'This issue is already marked as resolved.<br>If you feel that is not the case, please reopen it and explain why.';
+
+// ranking
+$s_plugin_GaugeSupport_sup_sta_dis = 'Support Stance Distribution';
+$s_plugin_GaugeSupport_ACS_abbr = 'ACS';
+$s_plugin_GaugeSupport_ACS_elab = 'Absolute Community Support';
+$s_plugin_GaugeSupport_ASPU_abbr = 'ASPU';
+$s_plugin_GaugeSupport_ASPU_elab = 'Average Support per User';
+$s_plugin_GaugeSupport_show_all_pos = '&raquo; Show all {project} issues, highest-supported first';
+$s_plugin_GaugeSupport_show_all_neg = '&raquo; Show all {project} issues, lowest-supported first';
+
+?>
