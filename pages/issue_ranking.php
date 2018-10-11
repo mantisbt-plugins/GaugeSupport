@@ -16,6 +16,8 @@
 		$where_clause .= " AND {$skipThese1} AND {$skipThese2} " ;
 	}
 	// fetch collected data from DB
+	$dbquery= "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
+	$dboutput = db_query($dbquery); 
 	$plugin_table = plugin_table("support_data");
 	$bug_table = db_get_table('mantis_bug_table');
 	$dbquery = "SELECT
@@ -44,7 +46,7 @@
 	ORDER BY sum(sd.rating) DESC ";
 	// echo "<p>$dbquery</p>";
 	//die();
-	$dboutput = db_query_bound($dbquery);
+	$dboutput = db_query($dbquery);
 	$noOfRowsWeGot = db_num_rows($dboutput);
 	if ($noOfRowsWeGot==0){
 		print_successful_redirect( 'my_view_page.php' );
