@@ -8,14 +8,17 @@
 	if(in_array(bug_get_field($bugid, 'severity'),$current)){
 		return;
 	}
-
+	$current= explode(",", plugin_config_get( 'gaugesupport_incl_severity' ));
+	if(!in_array(bug_get_field($bugid, 'severity'),$current)){
+		return;
+	} 
 	$current= explode(",", plugin_config_get( 'gaugesupport_excl_status' ));
 	if(in_array(bug_get_field($bugid, 'status'),$current)){
 		return;
 	}
 		$dbtable = plugin_table("support_data");
 		$dbquery = "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";
-		$dboutput = db_query_bound($dbquery);
+		$dboutput = db_query($dbquery);
 
 		$supporters = array();
 		$opponents = array();
