@@ -1,0 +1,53 @@
+<?php
+/*
+	Gauge Support - a MantisBT plugin allowing users to express their stance on individual issues.
+	Copyright (C) 2010  Charly Kiendl
+
+	This program is free software: you can redistribute it and/or modify
+	it under the terms of the GNU General Public License as published by
+	the Free Software Foundation, either version 3 of the License, or
+	(at your option) any later version.
+
+	This program is distributed in the hope that it will be useful,
+	but WITHOUT ANY WARRANTY; without even the implied warranty of
+	MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+	GNU General Public License for more details.
+
+	You should have received a copy of the GNU General Public License
+	along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+// general headlines
+//translation "issue": Probleme schließt Feature Requests nicht ein. Issue ebenso. Ticket ist Begriff den Mantis benutzt, Task, Eintrag oder Aufgabe? 
+$s_plugin_GaugeSupport_menu_link = 'Ticket Bewertungs-Rangliste';
+$s_plugin_GaugeSupport_block_title = 'Ticket Bewertung der Community ';
+$s_plugin_GaugeSupport_ranking_title = 'Community Bewertungsrangliste für {project} Tickets';
+$s_plugin_GaugeSupport_ranking_pos_title = 'Meist unterstützte {project} Tickets';
+$s_plugin_GaugeSupport_ranking_neg_title = 'Niedrigst unterstüzte {project} Tickets';
+$s_plugin_GaugeSupport_plugin_title		='Community Unterstützungsrangliste für Tickets';
+$s_plugin_GaugeSupport_excl_status		='Status von der Übersichtsliste ausschließen';
+$s_plugin_GaugeSupport_incl_severity		='Schweregrade in Übersichtsliste aufnehmen';
+$s_plugin_GaugeSupport_excl_resolution		='Schließungsgründe von der Übersichtsliste ausschließen';
+
+// supporters / opponents
+$s_plugin_GaugeSupport_supporters = 'Unterstützer';
+$s_plugin_GaugeSupport_opponents = 'Gegner';
+$s_plugin_GaugeSupport_no_supporters = 'Bislang hat sich niemand für dies Ticket ausgeprochen';
+$s_plugin_GaugeSupport_no_opponents = 'Bislang hat sich niemand gegen dieses Ticket ausgesprochen';
+
+// voting
+$s_plugin_GaugeSupport_submit_text = 'Abstimmen';
+$s_plugin_GaugeSupport_do_it_now = 'Stark dafür ';
+$s_plugin_GaugeSupport_do_it_later = 'Dafür ';
+$s_plugin_GaugeSupport_do_it_last = 'Dagegen ';
+$s_plugin_GaugeSupport_do_it_never = 'Sehr dagegen ';
+$s_plugin_GaugeSupport_already_resolved = 'Dieses Ticket wurde als geschlossen markiert.<br>Falls Sie anderer Meinung sind, öffnen Sie es erneut und fügen Sie eine Begründung an.';
+
+// ranking
+$s_plugin_GaugeSupport_sup_sta_dis = 'Unterstützungs-Verteilung';
+$s_plugin_GaugeSupport_ACS_abbr = 'ACS';
+$s_plugin_GaugeSupport_ACS_elab = 'Absolute Community Unterstützung';
+$s_plugin_GaugeSupport_ASPU_abbr = 'ASPU';
+$s_plugin_GaugeSupport_ASPU_elab = 'Durchschnittliche Bewertung';
+$s_plugin_GaugeSupport_show_all_pos = '&raquo; Zeige alle {project} Tickets in absteigener Bewertungsreihenfolge';
+$s_plugin_GaugeSupport_show_all_neg = '&raquo; Zeige alle {project} Tickets in aufsteigener Bewertungsreihenfolge';
