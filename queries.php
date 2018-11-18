@@ -47,7 +47,7 @@ if(config_get_global( 'db_type' ) == "mysqli")
     function get_bug_ratings($bugid)
     {
         $dbtable = plugin_table("support_data");
-        $dbquery = "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";    
+        return "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";    
     }
 }
 elseif(config_get_global( 'db_type' ) == "pgsql")
@@ -95,7 +95,7 @@ elseif(config_get_global( 'db_type' ) == "pgsql")
     function get_bug_ratings($bugid)
     {
         $dbtable = plugin_table("support_data");
-        $dbquery = "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";    
+        return "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";    
     }
 }
 else
