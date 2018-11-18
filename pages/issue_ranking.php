@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . "/../queries.php");
+
 	$project['name'] = project_get_name(helper_get_current_project()); // fucking PHP doesn't accept static variables initialized by functions x_x
 	$project['id'] = helper_get_current_project();
 
@@ -16,34 +18,11 @@
 		$where_clause .= " AND {$skipThese1} AND {$skipThese2} " ;
 	}
 	// fetch collected data from DB
-	$dbquery= "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
-	$dboutput = db_query($dbquery); 
+	if(config_get_global( 'db_type' ) == "mysqli")	
+		db_query($set_global_dbmode); 
 	$plugin_table = plugin_table("support_data");
 	$bug_table = db_get_table('mantis_bug_table');
-	$dbquery = "SELECT
-		max(sd.bugid) as bugid,
-		count(sd.rating) as no_of_ratings,
-		sum(sd.rating) as sum_of_ratings,
-		avg(sd.rating) as avg_rating,
-		max(sd.rating) as highest_rating,
-		min(sd.rating) as lowest_rating,
-		IFNULL(bm2_count,0) AS bm2_count,
-		IFNULL(bm2_sum,0) AS bm2_sum,
-		IFNULL(bm1_count,0) AS bm1_count,
-		IFNULL(bm1_sum,0) AS bm1_sum,
-		IFNULL(b2_count,0) AS b2_count,
-		IFNULL(b2_sum,0) AS b2_sum,
-		IFNULL(b1_count,0) AS b1_count,
-		IFNULL(b1_sum,0) AS b1_sum
-	FROM {$plugin_table} sd
-	INNER JOIN {$bug_table} b ON sd.bugid = b.id
-	LEFT OUTER JOIN (SELECT bugid, count(rating) as bm2_count, sum(rating) as bm2_sum FROM {$plugin_table} GROUP BY bugid, rating HAVING rating = -2) bm2 ON sd.bugid = bm2.bugid
-	LEFT OUTER JOIN (SELECT bugid, count(rating) as bm1_count, sum(rating) as bm1_sum FROM {$plugin_table} GROUP BY bugid, rating HAVING rating = -1) bm1 ON sd.bugid = bm1.bugid
-	LEFT OUTER JOIN (SELECT bugid, count(rating) as b2_count, sum(rating) as b2_sum FROM {$plugin_table} GROUP BY bugid, rating HAVING rating = 2) b2 ON sd.bugid = b2.bugid
-	LEFT OUTER JOIN (SELECT bugid, count(rating) as b1_count, sum(rating) as b1_sum FROM {$plugin_table} GROUP BY bugid, rating HAVING rating = 1) b1 ON sd.bugid = b1.bugid
-	{$where_clause}
-	GROUP BY sd.bugid
-	ORDER BY sum(sd.rating) DESC ";
+	$dbquery = get_vote_overview(); 
 	// echo "<p>$dbquery</p>";
 	//die();
 	$dboutput = db_query($dbquery);

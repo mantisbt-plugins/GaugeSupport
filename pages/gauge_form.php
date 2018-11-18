@@ -1,4 +1,6 @@
 <?php
+require_once(__DIR__ . "/../queries.php");
+
 	# ABORT CONDITIONs
 	if(current_user_is_anonymous()){
 		return;
@@ -17,8 +19,7 @@
 		return;
 	}
 		$dbtable = plugin_table("support_data");
-		$dbquery = "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";
-		$dboutput = db_query($dbquery);
+		$dboutput = db_query(get_bug_ratings($bugid));
 
 		$supporters = array();
 		$opponents = array();
