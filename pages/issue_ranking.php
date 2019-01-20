@@ -17,7 +17,8 @@
 	}
 	// fetch collected data from DB
 	$dbquery= "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
-	$dboutput = db_query($dbquery); 
+	$dboutput = db_query($dbquery);
+
 	$plugin_table = plugin_table("support_data");
 	$bug_table = db_get_table('mantis_bug_table');
 	$dbquery = "SELECT
@@ -49,6 +50,7 @@
 	$dboutput = db_query($dbquery);
 	$noOfRowsWeGot = db_num_rows($dboutput);
 	if ($noOfRowsWeGot==0){
+		echo "<script>alert('There is not enough data to generate a report');</script>";
 		print_successful_redirect( 'my_view_page.php' );
 	}
 	$resultset = array();
@@ -111,7 +113,7 @@ foreach($resultset as $bugid => $data) {
 	$countval['none'] = array_key_exists(-2, $data['ratings']) ? $data['ratings'][-2]['count'] : 0;
 ?>
 	<tr>
-	<td><a href="view.php?id=<?php echo $bug->id ?>."><?php echo $bug->id ?></td>
+	<td><a href="view.php?id=<?php echo $bug->id ?>"><?php echo $bug->id ?></td>
 	<td><?php echo $bug->summary ?></td>
 	<td><?php echo $data['no_of_ratings'] ?></td>
 	<td><?php echo $data['sum_of_ratings'] ?></td>
