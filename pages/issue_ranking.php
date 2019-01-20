@@ -50,8 +50,7 @@
 	$dboutput = db_query($dbquery);
 	$noOfRowsWeGot = db_num_rows($dboutput);
 	if ($noOfRowsWeGot==0){
-		echo "<script>alert('There is not enough data to generate a report');</script>";
-		print_successful_redirect( 'my_view_page.php' );
+		echo "<script>alert('There is not enough data to generate a report');window.location='my_view_page.php';</script>";
 	}
 	$resultset = array();
 	// load listable issues into array
