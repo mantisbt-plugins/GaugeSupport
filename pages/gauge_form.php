@@ -5,13 +5,14 @@
 	}
 		
 	$current= explode(",", plugin_config_get( 'gaugesupport_excl_resolution' ));
-	if(in_array(bug_get_field($bugid, 'severity'),$current)){
+	if(in_array(bug_get_field($bugid, 'resolution'),$current)){
 		return;
 	}
 	$current= explode(",", plugin_config_get( 'gaugesupport_incl_severity' ));
 	if(!in_array(bug_get_field($bugid, 'severity'),$current)){
 		return;
-	} 
+	}
+
 	$current= explode(",", plugin_config_get( 'gaugesupport_excl_status' ));
 	if(in_array(bug_get_field($bugid, 'status'),$current)){
 		return;
@@ -118,4 +119,4 @@ $colspan=6;
 </form>
 </div>
 </div></td>
-</tr>
+</tr> 
