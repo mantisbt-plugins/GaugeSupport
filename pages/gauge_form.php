@@ -38,7 +38,7 @@ if( db_num_rows( $dboutput ) ) {
 		$row_rating = $row['rating'];
 		($row_rating > 0)? $type = &$supporters : $type = &$opponents;
 		$class = (user_get_field( $row_uid, 'access_level' ) >= DEVELOPER) ? 'dev' : 'normal';
-		array_push($type, '<a href="./view_user_page.php?id='.$row_uid.'" class="'.$class.'">'.user_get_name($row_uid).'</a>');
+		array_push($type, prepare_user_name( $row_uid ) );
 
 		if( $row_uid == auth_get_current_user_id() ) {
 			$t_active_rating = (int)$row_rating;
