@@ -45,10 +45,17 @@ if( db_num_rows( $dboutput ) ) {
 		}
 	}
 }
-$supporters = implode(', ', $supporters); # abusing untyped languages 101
-$opponents = implode(', ', $opponents);
-if(!strlen($supporters)) $supporters = plugin_lang_get('no_supporters');
-if(!strlen($opponents)) $opponents = plugin_lang_get('no_opponents');
+
+if( $supporters ) {
+	$supporters = implode(', ', $supporters);
+} else {
+	$supporters = plugin_lang_get( 'no_supporters' );
+}
+if( $opponents ) {
+	$opponents = implode(', ', $opponents);
+} else {
+	$opponents = plugin_lang_get( 'no_opponents' );
+}
 
 $t_ratings = array(
 	+2 => 'do_it_now',
