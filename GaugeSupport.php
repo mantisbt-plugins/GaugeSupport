@@ -5,7 +5,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$this->name = 'Gauge Issue Support';
 		$this->description = 'This plugin gives community members the option to vote for higher or lower development priority of an issue.';
 		$this->page = 'config';
-		$this->version = '2.04';
+		$this->version = '2.5.0-dev';
 		$this->requires = array(
 			'MantisCore' => '2.0.0',
 			);
