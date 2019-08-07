@@ -40,7 +40,7 @@ if( db_num_rows( $dboutput ) ) {
 		$class = (user_get_field( $row_uid, 'access_level' ) >= DEVELOPER) ? 'dev' : 'normal';
 		array_push($type, '<a href="./view_user_page.php?id='.$row_uid.'" class="'.$class.'">'.user_get_name($row_uid).'</a>');
 
-		if($row_uid == current_user_get_field('id')) {
+		if( $row_uid == auth_get_current_user_id() ) {
 			$t_active_rating = (int)$row_rating;
 		}
 	}
