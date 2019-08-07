@@ -57,6 +57,7 @@ $t_ratings = array(
 ?>
 
 <div class="col-md-12 col-xs-12">
+<a id="rating"></a>
 <div class="space-10"></div>
 
 <div class="widget-box widget-color-blue2">
