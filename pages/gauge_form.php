@@ -28,7 +28,9 @@ $supporters = array();
 $opponents = array();
 $t_active_rating = 0;
 
-if($dboutput->RecordCount() > 0) {
+if( db_num_rows( $dboutput ) ) {
+	# @TODO retrieving data should be done with MantisBT API
+	# not with ADOdb native methods
 	$data = $dboutput->GetArray();
 
 	foreach($data as $row) {
