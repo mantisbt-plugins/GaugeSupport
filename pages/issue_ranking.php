@@ -20,7 +20,7 @@
 	$dboutput = db_query($dbquery);
 
 	$plugin_table = plugin_table("support_data");
-	$bug_table = db_get_table('mantis_bug_table');
+	$bug_table = db_get_table('bug');
 	$dbquery = "SELECT
 		max(sd.bugid) as bugid,
 		count(sd.rating) as no_of_ratings,
