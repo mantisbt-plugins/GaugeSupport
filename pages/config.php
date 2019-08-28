@@ -8,11 +8,11 @@ print_manage_menu();
 /**
  * Retrieves plugin configuration.
  * Converts array values to integer, to avoid type mismatch errors.
- * @param $p_option
+ * @param string $p_option Config option to retrieve
  * @return
  */
 function get_current_config( $p_option ) {
-    $t_values = explode( ',', plugin_config_get( 'gaugesupport_excl_status' ) );
+    $t_values = explode( ',', plugin_config_get( $p_option ) );
 	return array_map( 'intval', $t_values );
 }
 
@@ -32,48 +32,33 @@ function get_current_config( $p_option ) {
 <div class="widget-body">
 <div class="widget-main no-padding">
 <div class="table-responsive"> 
-<table class="table table-bordered table-condensed table-striped"> 
-<tr>
-	<td class="category" >
-		<?php echo plugin_lang_get( 'excl_status' ) ?>
-	</td>
-	<td>
-	<?php
-		$current = get_current_config('gaugesupport_excl_status');
-		echo '<td><select multiple ' . helper_get_tab_index() . ' id="excl_status" name="excl_status[]" class="input-sm">';
-		print_enum_string_option_list( 'status', $current );
-		echo '</select></td>'; 		
-			?>
-	</td>
-</tr>
-<tr>
-	<td class="category" >
-		<?php echo plugin_lang_get( 'incl_severity' ) ?>
-	</td>
-	<td>
-	<?php
-    	$current = get_current_config('gaugesupport_incl_severity');
-		echo '<td><select multiple ' . helper_get_tab_index() . ' id="incl_severity" name="incl_severity[]" class="input-sm">';
-		print_enum_string_option_list( 'severity', $current );
-		echo '</select></td>'; 
-	?>
-	</td>
-</tr>
-<tr>
-	<td class="category" >
-		<?php echo plugin_lang_get( 'excl_resolution' ) ?>
-	</td>
-	<td>
-	<?php
-    	$current = get_current_config('gaugesupport_excl_resolution');
-		echo '<td><select multiple ' . helper_get_tab_index() . ' id="excl_resolution" name="excl_resolution[]" class="input-sm">';
-		print_enum_string_option_list( 'resolution', $current );
-		echo '</select></td>'; 		
-	?>
-	</td>
-</tr>
-
-</table>
+	<table class="table table-bordered table-condensed table-striped">
+<?php
+	$t_configs = array(
+		'excl_status',
+		'incl_severity',
+		'excl_resolution',
+	);
+	foreach( $t_configs as $t_name ) {
+		$t_config_id = 'gaugesupport_' . $t_name;
+		$t_config_values = get_current_config('gaugesupport_excl_status');
+		list( , $t_enum ) = explode( '_', $t_name );
+?>
+		<tr>
+			<td class="category" width="30%">
+				<?php echo plugin_lang_get( $t_name ) ?>
+			</td>
+			<td>
+				<select id="<?php echo $t_name; ?>" name="<?php echo $t_name; ?>[]"
+						class="input-sm" multiple <?php echo helper_get_tab_index() ?> >
+					<?php print_enum_string_option_list( $t_enum, $t_config_values ); ?>
+				</select>
+			</td>
+		</tr>
+<?php
+	}
+?>
+	</table>
 </div>
 </div>
 <div class="widget-toolbox padding-8 clearfix">
