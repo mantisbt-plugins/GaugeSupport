@@ -1,6 +1,7 @@
 <?php
 
 class GaugeSupportPlugin extends MantisPlugin {
+
 	function register() {
 		$this->name = 'Gauge Issue Support';
 		$this->description = 'This plugin gives community members the option to vote for higher or lower development priority of an issue.';
@@ -18,7 +19,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 	/*** Default plugin configuration.	 */
 	function config() {
 		return array(
-			'gaugesupport_excl_status'			=> '80,90' ,
+			'gaugesupport_excl_status'			=> '80,90',
 			'gaugesupport_incl_severity'		=> '30,40',
 			'gaugesupport_excl_resolution'		=> '20,40,50,60,70,90',
 			);
@@ -30,14 +31,14 @@ class GaugeSupportPlugin extends MantisPlugin {
 	}
 
 	function menuLinks($p_event) {
-            return array(
-                array( 
-                    'title' => plugin_lang_get( 'menu_link' ),
-                    'access_level' => '',
-                    'url' => 'plugin.php?page=GaugeSupport/issue_ranking',
-                    'icon' => 'fa-line-chart'
-                ),
-            ); 
+		return array(
+			array(
+				'title' => plugin_lang_get( 'menu_link' ),
+				'access_level' => '',
+				'url' => 'plugin.php?page=GaugeSupport/issue_ranking',
+				'icon' => 'fa-line-chart'
+			),
+		);
 	}
 
 	function renderBugSnippet($p_event, $bugid) {
@@ -58,7 +59,6 @@ class GaugeSupportPlugin extends MantisPlugin {
 					array( "mysql" => "DEFAULT CHARSET=utf8" )
 				),
 			)
-
 		);
 	}
 
