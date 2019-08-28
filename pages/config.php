@@ -56,7 +56,7 @@ function check_selected1( $p_var, $p_val = true, $p_strict = true ) {
 <div class="widget-main no-padding">
 <div class="table-responsive"> 
 <table class="table table-bordered table-condensed table-striped"> 
-<tr <?php echo helper_alternate_class() ?>>
+<tr>
 	<td class="category" >
 		<?php echo plugin_lang_get( 'excl_status' ) ?>
 	</td>
@@ -69,7 +69,7 @@ function check_selected1( $p_var, $p_val = true, $p_strict = true ) {
 			?>
 	</td>
 </tr>
-<tr <?php echo helper_alternate_class() ?>>
+<tr>
 	<td class="category" >
 		<?php echo plugin_lang_get( 'incl_severity' ) ?>
 	</td>
@@ -82,7 +82,7 @@ function check_selected1( $p_var, $p_val = true, $p_strict = true ) {
 	?>
 	</td>
 </tr>
-<tr <?php echo helper_alternate_class() ?>>
+<tr>
 	<td class="category" >
 		<?php echo plugin_lang_get( 'excl_resolution' ) ?>
 	</td>
