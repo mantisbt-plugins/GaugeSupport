@@ -52,5 +52,3 @@ $s_plugin_GaugeSupport_ASPU_abbr = 'ASPU';
 $s_plugin_GaugeSupport_ASPU_elab = 'Average Support per User';
 $s_plugin_GaugeSupport_show_all_pos = '&raquo; Show all {project} issues, highest-supported first';
 $s_plugin_GaugeSupport_show_all_neg = '&raquo; Show all {project} issues, lowest-supported first';
-
-?>
