@@ -42,7 +42,7 @@ print_manage_menu();
 			</td>
 			<td>
 				<select id="<?php echo $t_name; ?>" name="<?php echo $t_name; ?>[]"
-						class="input-sm" multiple <?php echo helper_get_tab_index() ?> >
+						class="input-sm" size="6" multiple <?php echo helper_get_tab_index() ?> >
 					<?php print_enum_string_option_list( $t_enum, $t_config_values ); ?>
 				</select>
 			</td>
