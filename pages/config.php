@@ -4,18 +4,6 @@ access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 layout_page_header( plugin_lang_get( 'plugin_title' ) );
 layout_page_begin( 'config_page.php' );
 print_manage_menu();
-
-/**
- * Retrieves plugin configuration.
- * Converts array values to integer, to avoid type mismatch errors.
- * @param string $p_option Config option to retrieve
- * @return
- */
-function get_current_config( $p_option ) {
-    $t_values = explode( ',', plugin_config_get( $p_option ) );
-	return array_map( 'intval', $t_values );
-}
-
 ?>
 <div class="col-md-12 col-xs-12">
 <div class="space-10"></div>
@@ -40,8 +28,12 @@ function get_current_config( $p_option ) {
 		'excl_resolution',
 	);
 	foreach( $t_configs as $t_name ) {
+		# Retrieve current config and convert array values to integer
 		$t_config_id = 'gaugesupport_' . $t_name;
-		$t_config_values = get_current_config('gaugesupport_excl_status');
+		$t_config_values = array_map(
+			'intval',
+			explode( ',', plugin_config_get( $t_config_id ) )
+		);
 		list( , $t_enum ) = explode( '_', $t_name );
 ?>
 		<tr>
