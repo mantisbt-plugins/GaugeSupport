@@ -73,65 +73,65 @@ $topic = "Most supported " . $project['name'] . " issues " ;
 layout_page_header( );
 layout_page_begin( );
 ?>
+
 <div class="col-md-12 col-xs-12">
 <div class="space-10"></div>
-<div class="form-container" > 
-<br/>
 <div class="widget-box widget-color-blue2">
-<div class="widget-header widget-header-small">
-<h4 class="widget-title lighter">
-<i class="ace-icon fa fa-text-width"></i>
-<?php echo plugin_lang_get( 'block_title' ) . ': ' . plugin_lang_get( 'plugin_title' )?>
-</h4>
-</div>
-<div class="widget-body">
-<div class="widget-main no-padding">
-<tr>
-<?php 
-echo"==>>";
-?>
-<a href="plugins/GaugeSupport/pages/issue_ranking_xls.php">XLS-Download</a>
-</tr>
-<div class="table-responsive"> 
-<table class="table table-bordered table-condensed table-striped"> 
-<tr>
-<td>Bug-id</td>
-<td>Summary</td>
-<td>Total Ratings</td>
-<td>Absolute Community Support</td>
-<td>Average Support per User</td>
-<td>Highest rating</td>
-<td>Lowest Rating</td>
-</tr>
+	<div class="widget-header widget-header-small">
+		<h4 class="widget-title lighter">
+			<i class="ace-icon fa fa-text-width"></i>
+			<?php echo plugin_lang_get( 'block_title' ) . ': ' . plugin_lang_get( 'plugin_title' )?>
+		</h4>
+	</div>
+
+	<div class="widget-body">
+		<div class="widget-main no-padding">
+
+			<div class="table-responsive">
+				<div class="widget-toolbox padding-8 clearfix">
+					<a class="btn btn-primary btn-white btn-round "
+					   href="plugins/GaugeSupport/pages/issue_ranking_xls.php">
+						XLS Download
+					</a>
+				</div>
+
+				<table class="table table-bordered table-condensed table-striped">
+					<tr>
+						<th>Bug-id</th>
+						<th>Summary</th>
+						<th>Total Ratings</th>
+						<th>Absolute Community Support</th>
+						<th>Average Support per User</th>
+						<th>Highest rating</th>
+						<th>Lowest Rating</th>
+					</tr>
 <?php
 foreach($resultset as $bugid => $data) {
-	$bug = bug_get($bugid);
+	$bug = bug_get( $bugid );
 	$countval['high'] = array_key_exists(2, $data['ratings']) ? $data['ratings'][2]['count'] : 0;
 	$countval['normal'] = array_key_exists(1, $data['ratings']) ? $data['ratings'][1]['count'] : 0;
 	$countval['low'] = array_key_exists(-1, $data['ratings']) ? $data['ratings'][-1]['count'] : 0;
 	$countval['none'] = array_key_exists(-2, $data['ratings']) ? $data['ratings'][-2]['count'] : 0;
 ?>
-	<tr>
-	<td><a href="view.php?id=<?php echo $bug->id ?>"><?php echo $bug->id ?></td>
-	<td><?php echo $bug->summary ?></td>
-	<td><?php echo $data['no_of_ratings'] ?></td>
-	<td><?php echo $data['sum_of_ratings'] ?></td>
-	<td><?php echo $data['avg_rating'] ?></td>
-	<td><?php echo $data['highest_rating'] ?></td>
-	<td><?php echo $data['lowest_rating'] ?></td>
-	</tr>
-	<?php
+					<tr>
+						<td><a href="view.php?id=<?php echo $bug->id ?>"><?php echo $bug->id ?></td>
+						<td><?php echo $bug->summary ?></td>
+						<td><?php echo $data['no_of_ratings'] ?></td>
+						<td><?php echo $data['sum_of_ratings'] ?></td>
+						<td><?php echo $data['avg_rating'] ?></td>
+						<td><?php echo $data['highest_rating'] ?></td>
+						<td><?php echo $data['lowest_rating'] ?></td>
+					</tr>
+<?php
 }
 ?>
-</table>
+				</table>
+			</div>
+
+		</div>
+	</div>
 </div>
+
 </div>
-<div>
-</div>
-</div>
-</div>
-</form>
-</div>
-</div>	
 <?php
 layout_page_end();
