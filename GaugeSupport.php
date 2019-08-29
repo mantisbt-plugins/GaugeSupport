@@ -20,7 +20,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 	function config() {
 		return array(
 			'gaugesupport_excl_status'			=> '80,90',
-			'gaugesupport_incl_severity'		=> '30,40',
+			'gaugesupport_incl_severity'		=> '10,50,60,70,80',
 			'gaugesupport_excl_resolution'		=> '20,40,50,60,70,90',
 			);
 	} 
