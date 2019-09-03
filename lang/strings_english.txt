@@ -25,10 +25,10 @@ $s_plugin_GaugeSupport_block_title = 'Issue Community Support';
 $s_plugin_GaugeSupport_ranking_title = 'Community Support Ranking for {project} issues';
 $s_plugin_GaugeSupport_ranking_pos_title = 'Highest-Supported {project} Issues';
 $s_plugin_GaugeSupport_ranking_neg_title = 'Lowest-Supported {project} Issues';
-$s_plugin_GaugeSupport_plugin_title		='Community Support Ranking for issues';
-$s_plugin_GaugeSupport_excl_status		='Statusses to exclude from overview';
-$s_plugin_GaugeSupport_incl_severity		='Severities to include in overview';
-$s_plugin_GaugeSupport_excl_resolution		='Resolutions to exclude from overview';
+$s_plugin_GaugeSupport_plugin_title = 'Community Support Ranking for issues';
+$s_plugin_GaugeSupport_excl_status = 'Statusses to exclude from overview';
+$s_plugin_GaugeSupport_incl_severity = 'Severities to include in overview';
+$s_plugin_GaugeSupport_excl_resolution = 'Resolutions to exclude from overview';
 
 // supporters / opponents
 $s_plugin_GaugeSupport_supporters = 'Supporters';
@@ -38,10 +38,10 @@ $s_plugin_GaugeSupport_no_opponents = 'No one explicitly opposes this issue yet.
 
 // voting
 $s_plugin_GaugeSupport_submit_text = 'Declare your stance!';
-$s_plugin_GaugeSupport_do_it_now = 'strong support ';
-$s_plugin_GaugeSupport_do_it_later = 'inclined in favor ';
-$s_plugin_GaugeSupport_do_it_last = 'inclined against it ';
-$s_plugin_GaugeSupport_do_it_never = 'strong rejection ';
+$s_plugin_GaugeSupport_do_it_now = 'strong support';
+$s_plugin_GaugeSupport_do_it_later = 'inclined in favor';
+$s_plugin_GaugeSupport_do_it_last = 'inclined against it';
+$s_plugin_GaugeSupport_do_it_never = 'strong rejection';
 $s_plugin_GaugeSupport_already_resolved = 'This issue is already marked as resolved.<br>If you feel that is not the case, please reopen it and explain why.';
 
 // ranking
