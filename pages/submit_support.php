@@ -1,4 +1,6 @@
 <?php
+form_security_validate( 'GaugeSupport_submit_vote' );
+
 $bugId = gpc_get_int('bugid');
 $stance = gpc_get_int('stance');
 $dbtable = plugin_table("support_data","GaugeSupport");

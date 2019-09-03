@@ -98,6 +98,7 @@ $t_ratings = array(
 
 	<div class="widget-toolbox padding-8 clearfix form-container">
 		<form name="voteadding" method="post" action="<?php echo plugin_page( 'submit_support' ); ?>">
+			<?php echo form_security_field( 'GaugeSupport_submit_vote' ); ?>
 			<input type="hidden" name="bugid" value="<?php echo $bugid; ?>">
 
 <?php
