@@ -14,6 +14,6 @@ $t_param = array(
 	$f_stance,
 	$f_stance
 );
-$t_result = db_query_bound( $t_query, $t_param );
+$t_result = db_query( $t_query, $t_param );
 
 print_successful_redirect( 'view.php?id=' . $f_bug_id );
