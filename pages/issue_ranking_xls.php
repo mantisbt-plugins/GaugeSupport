@@ -1,28 +1,17 @@
 <?php
-require_once( '../../../core.php' );
-$t_core_path = config_get( 'core_path' );
-require_once( $t_core_path.'current_user_api.php' );
-require_once( $t_core_path.'bug_api.php' );
-require_once( $t_core_path.'date_api.php' );
-require_once( $t_core_path.'icon_api.php' );
-require_once( $t_core_path.'string_api.php' );
-require_once( $t_core_path.'columns_api.php' ); 
-require_once( $t_core_path.'plugin_api.php' );
-
 $t_ratings = plugin_get()->getRatings();
 
 $t_export_title = "Issue_Ranking_excel";
-$t_export_title = ereg_replace( '[\/:*?"<>|]', '', $t_export_title );
+$t_export_title = preg_replace( '[\/:*?"<>|]', '', $t_export_title );
 
 # Make sure that IE can download the attachments under https.
 header( 'Pragma: public' );
 header( 'Content-Type: application/vnd.ms-excel' );
 header( 'Content-Disposition: attachment; filename="' . $t_export_title . '.xls"' );
-  
-?>
+
 
 // ==== PAGE GENERATION STARTS HERE ====
-
+?>
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 xmlns:x="urn:schemas-microsoft-com:office:excel"
 xmlns="http://www.w3.org/TR/REC-html40">
