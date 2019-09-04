@@ -122,6 +122,16 @@ $t_ratings = array(
 					class="btn btn-primary btn-sm btn-white btn-round">
 				<?php echo plugin_lang_get( 'submit_text' ); ?>
 			</button>
+<?php
+	if( $t_active_rating ) {
+?>
+			<button name="vote" type="submit" value="withdraw"
+					class="btn btn-primary btn-sm btn-white btn-round">
+				<?php echo plugin_lang_get( 'withdraw' ); ?>
+			</button>
+<?php
+	}
+?>
 		</form>
 	</div>
 </div>

@@ -38,6 +38,7 @@ $s_plugin_GaugeSupport_no_opponents = 'No one explicitly opposes this issue yet.
 
 // voting
 $s_plugin_GaugeSupport_submit_text = 'Declare your stance!';
+$s_plugin_GaugeSupport_withdraw = 'Withdraw vote';
 $s_plugin_GaugeSupport_do_it_now = 'strong support';
 $s_plugin_GaugeSupport_do_it_later = 'inclined in favor';
 $s_plugin_GaugeSupport_do_it_last = 'inclined against';
