@@ -90,7 +90,7 @@ layout_page_begin( );
 			<div class="table-responsive">
 				<div class="widget-toolbox padding-8 clearfix">
 					<a class="btn btn-primary btn-white btn-round "
-					   href="plugins/GaugeSupport/pages/issue_ranking_xls.php">
+					   href="<?php echo plugin_page( 'issue_ranking_xls' ); ?>">
 						XLS Download
 					</a>
 				</div>
