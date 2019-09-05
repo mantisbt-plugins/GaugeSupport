@@ -41,7 +41,9 @@ print_manage_menu();
 ?>
 						<tr>
 							<td class="category" width="30%">
-								<?php echo plugin_lang_get( $t_name ) ?>
+								<label for="<?php echo $t_name; ?>">
+									<?php echo plugin_lang_get( $t_name ) ?>
+								</label>
 							</td>
 							<td>
 								<select id="<?php echo $t_name; ?>" name="<?php echo $t_name; ?>[]"
