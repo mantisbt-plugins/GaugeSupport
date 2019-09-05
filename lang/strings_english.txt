@@ -22,9 +22,6 @@ $s_plugin_GaugeSupport_title = 'Gauge Support';
 $s_plugin_GaugeSupport_description = 'Gives community members the option to vote for higher or lower development priority of an issue.';
 $s_plugin_GaugeSupport_menu_link = 'Issue Support Ranking';
 $s_plugin_GaugeSupport_block_title = 'Issue Community Support';
-$s_plugin_GaugeSupport_ranking_title = 'Community Support Ranking for {project} issues';
-$s_plugin_GaugeSupport_ranking_pos_title = 'Highest-Supported {project} Issues';
-$s_plugin_GaugeSupport_ranking_neg_title = 'Lowest-Supported {project} Issues';
 
 // Config page
 $s_plugin_GaugeSupport_config_title = 'Configuration';
@@ -50,6 +47,10 @@ $s_plugin_GaugeSupport_do_it_never = 'strong rejection';
 $s_plugin_GaugeSupport_already_resolved = 'This issue is already marked as resolved.<br>If you feel that is not the case, please reopen it and explain why.';
 
 // ranking
+$s_plugin_GaugeSupport_menu_link = 'Issue Support Ranking';
+$s_plugin_GaugeSupport_ranking_title = 'Community Support Ranking for Issues';
+$s_plugin_GaugeSupport_ranking_pos_title = 'Highest-Supported {project} Issues';
+$s_plugin_GaugeSupport_ranking_neg_title = 'Lowest-Supported {project} Issues';
 $s_plugin_GaugeSupport_sup_sta_dis = 'Support Stance Distribution';
 $s_plugin_GaugeSupport_rating_count = 'Total Ratings';
 $s_plugin_GaugeSupport_rating_high = 'Highest Rating';
