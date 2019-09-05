@@ -110,7 +110,7 @@ foreach($resultset as $bugid => $data) {
 	$bug = bug_get( $bugid );
 ?>
 					<tr>
-						<td><a href="view.php?id=<?php echo $bug->id ?>"><?php echo $bug->id ?></td>
+						<td><?php print_bug_link( $bug->id ); ?></td>
 						<td><?php echo $bug->summary ?></td>
 						<td><?php echo $data['no_of_ratings'] ?></td>
 						<td><?php echo $data['sum_of_ratings'] ?></td>
