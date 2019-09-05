@@ -19,9 +19,9 @@ class GaugeSupportPlugin extends MantisPlugin {
 	/*** Default plugin configuration.	 */
 	function config() {
 		return array(
-			'gaugesupport_excl_status'			=> '80,90',
-			'gaugesupport_incl_severity'		=> '10,50,60,70,80',
-			'gaugesupport_excl_resolution'		=> '20,40,50,60,70,90',
+			'excl_status'     => '80,90',
+			'excl_resolution' => '20,40,50,60,70,90',
+			'incl_severity'   => '10,50,60,70,80',
 			);
 	} 
 	
@@ -46,9 +46,10 @@ class GaugeSupportPlugin extends MantisPlugin {
 	}
 	
 	function schema() {
+		require_once( 'install.php' );
+
 		return array(
-			array(
-				"CreateTableSQL",
+			0 => array( "CreateTableSQL",
 				array(
 					plugin_table( "support_data" ),
 					"
@@ -58,7 +59,8 @@ class GaugeSupportPlugin extends MantisPlugin {
 					",
 					array( "mysql" => "DEFAULT CHARSET=utf8" )
 				),
-			)
+			),
+			1 => array( 'UpdateFunction', 'convert_config_names' ),
 		);
 	}
 
@@ -80,18 +82,14 @@ class GaugeSupportPlugin extends MantisPlugin {
 		}
 
 		# Config filters
-		$t_excl_status = plugin_config_get( 'gaugesupport_excl_status' );
-		$t_excl_resolution = plugin_config_get( 'gaugesupport_excl_resolution' );
-		$t_incl_severity = plugin_config_get( 'gaugesupport_incl_severity' );
+		foreach( array_keys( $this->config() ) as $t_config ) {
+			$t_values = plugin_config_get( $t_config );
+			list( $t_type, $t_field ) = explode( '_', $t_config );
 
-		if( $t_excl_status ) {
-			$t_where[] = "b.status NOT IN ( {$t_excl_status} )";
-		}
-		if( $t_excl_resolution ) {
-			$t_where[] = "b.resolution NOT IN ( {$t_excl_resolution} )";
-		}
-		if( $t_incl_severity ) {
-			$t_where[] = "b.severity IN ( {$t_incl_severity} )";
+			if( $t_values ) {
+				$t_in = $t_type == 'excl' ? 'NOT IN' : 'IN';
+				$t_where[] = "b.$t_field $t_in ($t_values)";
+			}
 		}
 
 		if( !empty( $t_where ) ) {

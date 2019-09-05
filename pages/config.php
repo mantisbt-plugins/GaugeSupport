@@ -25,28 +25,26 @@ print_manage_menu( 'manage_plugin_page.php' );
 				<div class="table-responsive">
 					<table class="table table-bordered table-condensed table-striped">
 <?php
-	$t_configs = array(
-		'excl_status',
-		'incl_severity',
-		'excl_resolution',
-	);
-	foreach( $t_configs as $t_name ) {
+	$t_plugin = plugin_get();
+	$t_configs = array_keys( $t_plugin->config() );
+	foreach( $t_configs as $t_config_id ) {
 		# Retrieve current config and convert array values to integer
-		$t_config_id = 'gaugesupport_' . $t_name;
 		$t_config_values = array_map(
 			'intval',
 			explode( ',', plugin_config_get( $t_config_id ) )
 		);
-		list( , $t_enum ) = explode( '_', $t_name );
+
+		# Get the corresponding enum
+		list( , $t_enum ) = explode( '_', $t_config_id );
 ?>
 						<tr>
 							<td class="category width-30">
-								<label for="<?php echo $t_name; ?>">
-									<?php echo plugin_lang_get( $t_name ) ?>
+								<label for="<?php echo $t_config_id; ?>">
+									<?php echo plugin_lang_get( $t_config_id ) ?>
 								</label>
 							</td>
 							<td>
-								<select id="<?php echo $t_name; ?>" name="<?php echo $t_name; ?>[]"
+								<select id="<?php echo $t_config_id; ?>" name="<?php echo $t_config_id; ?>[]"
 										class="input-sm" size="6" multiple <?php echo helper_get_tab_index() ?> >
 									<?php print_enum_string_option_list( $t_enum, $t_config_values ); ?>
 								</select>
