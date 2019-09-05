@@ -13,7 +13,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 
 		$this->author = 'Cas (based upon Renegade@RenegadeProjects.com)';
 		$this->contact = 'Cas@nuy.info';
-		$this->url = 'www.nuy.info';
+		$this->url = 'http://www.nuy.info';
 	}
 
 	/*** Default plugin configuration.	 */
