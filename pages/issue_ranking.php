@@ -48,10 +48,7 @@
 	// echo "<p>$dbquery</p>";
 	//die();
 	$dboutput = db_query($dbquery);
-	$noOfRowsWeGot = db_num_rows($dboutput);
-	if ($noOfRowsWeGot==0){
-		echo "<script>alert('There is not enough data to generate a report');window.location='my_view_page.php';</script>";
-	}
+
 	$resultset = array();
 	// load listable issues into array
 	while($row = db_fetch_array($dboutput)) {
@@ -86,6 +83,20 @@ layout_page_begin( );
 
 	<div class="widget-body">
 		<div class="widget-main no-padding">
+
+<?php
+	if( empty( $resultset ) ) {
+?>
+			<div class="container-fluid">
+				<br>
+				<div class="alert alert-warning center">
+					<?php echo plugin_lang_get( 'no_data' ); ?>
+				</div>
+				&nbsp;
+			</div>
+<?php
+	} else {
+?>
 
 			<div class="table-responsive">
 				<div class="widget-toolbox padding-8 clearfix">
@@ -123,7 +134,9 @@ foreach($resultset as $bugid => $data) {
 ?>
 				</table>
 			</div>
-
+<?php
+	} # if empty result set
+?>
 		</div>
 	</div>
 </div>
