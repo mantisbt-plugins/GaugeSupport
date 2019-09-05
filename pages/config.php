@@ -40,7 +40,7 @@ print_manage_menu();
 		list( , $t_enum ) = explode( '_', $t_name );
 ?>
 						<tr>
-							<td class="category" width="30%">
+							<td class="category width-30">
 								<label for="<?php echo $t_name; ?>">
 									<?php echo plugin_lang_get( $t_name ) ?>
 								</label>
