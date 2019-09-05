@@ -86,6 +86,11 @@ class GaugeSupportPlugin extends MantisPlugin {
 			$t_values = plugin_config_get( $t_config );
 			list( $t_type, $t_field ) = explode( '_', $t_config );
 
+			# If "include" config does not specify any values, then the query
+			# will never return any data so we take a shortcut
+			if( $t_type == 'incl' && empty( $t_values ) ) {
+				return array();
+			}
 			if( $t_values ) {
 				$t_in = $t_type == 'excl' ? 'NOT IN' : 'IN';
 				$t_where[] = "b.$t_field $t_in ($t_values)";
