@@ -70,7 +70,7 @@
 	}
 $topic = "Most supported " . $project['name'] . " issues " ;	
 // ==== PAGE GENERATION STARTS HERE ====
-layout_page_header( );
+layout_page_header( plugin_lang_get( 'title' ) );
 layout_page_begin( );
 ?>
 
@@ -80,7 +80,7 @@ layout_page_begin( );
 	<div class="widget-header widget-header-small">
 		<h4 class="widget-title lighter">
 			<i class="ace-icon fa fa-text-width"></i>
-			<?php echo plugin_lang_get( 'block_title' ) . ': ' . plugin_lang_get( 'plugin_title' )?>
+			<?php echo plugin_lang_get( 'title' ) . ': ' . plugin_lang_get( 'plugin_title' )?>
 		</h4>
 	</div>
 
