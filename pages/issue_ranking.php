@@ -97,13 +97,13 @@ layout_page_begin( );
 
 				<table class="table table-bordered table-condensed table-striped">
 					<tr>
-						<th>Bug-id</th>
-						<th>Summary</th>
-						<th>Total Ratings</th>
-						<th>Absolute Community Support</th>
-						<th>Average Support per User</th>
-						<th>Highest rating</th>
-						<th>Lowest Rating</th>
+						<th><?php echo lang_get( 'id' ); ?></th>
+						<th><?php echo lang_get( 'summary' ); ?></th>
+						<th><?php echo plugin_lang_get( 'rating_count' ); ?></th>
+						<th><?php echo plugin_lang_get( 'ACS_label' ); ?></th>
+						<th><?php echo plugin_lang_get( 'ASPU_label' ); ?></th>
+						<th><?php echo plugin_lang_get( 'rating_high' ); ?></th>
+						<th><?php echo plugin_lang_get( 'rating_low' ); ?></th>
 					</tr>
 <?php
 foreach($resultset as $bugid => $data) {

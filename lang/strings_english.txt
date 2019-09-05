@@ -51,9 +51,12 @@ $s_plugin_GaugeSupport_already_resolved = 'This issue is already marked as resol
 
 // ranking
 $s_plugin_GaugeSupport_sup_sta_dis = 'Support Stance Distribution';
+$s_plugin_GaugeSupport_rating_count = 'Total Ratings';
+$s_plugin_GaugeSupport_rating_high = 'Highest Rating';
+$s_plugin_GaugeSupport_rating_low = 'Lowest Rating';
 $s_plugin_GaugeSupport_ACS_abbr = 'ACS';
-$s_plugin_GaugeSupport_ACS_elab = 'Absolute Community Support';
+$s_plugin_GaugeSupport_ACS_label = 'Absolute Community Support';
 $s_plugin_GaugeSupport_ASPU_abbr = 'ASPU';
-$s_plugin_GaugeSupport_ASPU_elab = 'Average Support per User';
+$s_plugin_GaugeSupport_ASPU_label = 'Average Support per User';
 $s_plugin_GaugeSupport_show_all_pos = '&raquo; Show all {project} issues, highest-supported first';
 $s_plugin_GaugeSupport_show_all_neg = '&raquo; Show all {project} issues, lowest-supported first';
