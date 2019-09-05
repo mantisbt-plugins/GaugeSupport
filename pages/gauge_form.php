@@ -73,7 +73,7 @@ $t_ratings = array(
 	<div class="widget-header widget-header-small">
 		<h4 class="widget-title lighter">
 			<i class="ace-icon fa fa-text-width"></i>
-			<?php echo plugin_lang_get( 'block_title' ); ?>
+			<?php echo plugin_lang_get( 'title' ); ?>
 		</h4>
 	</div>
 
