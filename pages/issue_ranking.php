@@ -91,7 +91,7 @@ layout_page_begin( );
 				<div class="widget-toolbox padding-8 clearfix">
 					<a class="btn btn-primary btn-white btn-round "
 					   href="<?php echo plugin_page( 'issue_ranking_xls' ); ?>">
-						XLS Download
+						<?php echo plugin_lang_get( 'excel_download' ); ?>
 					</a>
 				</div>
 
