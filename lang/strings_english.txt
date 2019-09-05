@@ -18,6 +18,8 @@
 */
 
 // general headlines
+$s_plugin_GaugeSupport_title = 'Gauge Support';
+$s_plugin_GaugeSupport_description = 'Gives community members the option to vote for higher or lower development priority of an issue.';
 $s_plugin_GaugeSupport_menu_link = 'Issue Support Ranking';
 $s_plugin_GaugeSupport_block_title = 'Issue Community Support';
 $s_plugin_GaugeSupport_ranking_title = 'Community Support Ranking for {project} issues';
