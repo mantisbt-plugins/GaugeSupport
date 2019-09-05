@@ -82,9 +82,11 @@ class GaugeSupportPlugin extends MantisPlugin {
 		# Config filters
 		$t_excl_status = plugin_config_get( 'gaugesupport_excl_status' );
 		$t_excl_resolution = plugin_config_get( 'gaugesupport_excl_resolution' );
-		
+		$t_incl_severity = plugin_config_get( 'gaugesupport_incl_severity' );
+
 		$t_where[] = "b.status NOT IN ( {$t_excl_status} )";
 		$t_where[] = "b.resolution NOT IN ( {$t_excl_resolution} )";
+		$t_where[] = "b.severity IN ( {$t_incl_severity} )";
 
 		$t_where_clause = 'WHERE ' . implode( ' AND ', $t_where );
 
