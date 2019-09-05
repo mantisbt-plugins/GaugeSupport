@@ -17,7 +17,7 @@ print_manage_menu();
 		<div class="widget-header widget-header-small">
 			<h4 class="widget-title lighter">
 				<i class="ace-icon fa fa-text-width"></i>
-				<?php echo plugin_lang_get( 'title' ) . ': ' . lang_get( 'plugin_format_config' )?>
+				<?php echo plugin_lang_get( 'title' ) . ': ' . plugin_lang_get( 'config_title' ) ?>
 			</h4>
 		</div>
 		<div class="widget-body">
