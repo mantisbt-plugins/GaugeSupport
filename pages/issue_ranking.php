@@ -15,10 +15,7 @@
 	} else {
 		$where_clause .= " AND {$skipThese1} AND {$skipThese2} " ;
 	}
-	// fetch collected data from DB
-	$dbquery= "SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))";
-	$dboutput = db_query($dbquery);
-
+	//// fetch collected data from DB
 	$plugin_table = plugin_table("support_data");
 	$bug_table = db_get_table('bug');
 	$dbquery = "SELECT
@@ -43,11 +40,12 @@
 	LEFT OUTER JOIN (SELECT bugid, count(rating) as b2_count, sum(rating) as b2_sum FROM {$plugin_table} GROUP BY bugid, rating HAVING rating = 2) b2 ON sd.bugid = b2.bugid
 	LEFT OUTER JOIN (SELECT bugid, count(rating) as b1_count, sum(rating) as b1_sum FROM {$plugin_table} GROUP BY bugid, rating HAVING rating = 1) b1 ON sd.bugid = b1.bugid
 	{$where_clause}
-	GROUP BY sd.bugid
+	GROUP BY sd.bugid, bm2_count, bm2_sum, bm1_count, bm1_sum, b2_count, b2_sum, b1_count, b1_sum
 	ORDER BY sum(sd.rating) DESC ";
 	// echo "<p>$dbquery</p>";
 	//die();
 	$dboutput = db_query($dbquery);
+
 
 	$resultset = array();
 	// load listable issues into array
