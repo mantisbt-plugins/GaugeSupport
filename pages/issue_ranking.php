@@ -56,7 +56,7 @@ foreach( $t_ratings as $bugid => $data) {
 ?>
 					<tr>
 						<td><?php print_bug_link( $bug->id ); ?></td>
-						<td><?php echo $bug->summary ?></td>
+						<td><?php echo string_display_line( $bug->summary ) ?></td>
 						<td><?php echo $data['no_of_ratings'] ?></td>
 						<td><?php echo $data['sum_of_ratings'] ?></td>
 						<td><?php echo $data['avg_rating'] ?></td>
