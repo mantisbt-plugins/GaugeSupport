@@ -84,11 +84,19 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$t_excl_resolution = plugin_config_get( 'gaugesupport_excl_resolution' );
 		$t_incl_severity = plugin_config_get( 'gaugesupport_incl_severity' );
 
-		$t_where[] = "b.status NOT IN ( {$t_excl_status} )";
-		$t_where[] = "b.resolution NOT IN ( {$t_excl_resolution} )";
-		$t_where[] = "b.severity IN ( {$t_incl_severity} )";
+		if( $t_excl_status ) {
+			$t_where[] = "b.status NOT IN ( {$t_excl_status} )";
+		}
+		if( $t_excl_resolution ) {
+			$t_where[] = "b.resolution NOT IN ( {$t_excl_resolution} )";
+		}
+		if( $t_incl_severity ) {
+			$t_where[] = "b.severity IN ( {$t_incl_severity} )";
+		}
 
-		$t_where_clause = 'WHERE ' . implode( ' AND ', $t_where );
+		if( !empty( $t_where ) ) {
+			$t_where_clause = 'WHERE ' . implode( ' AND ', $t_where );
+		}
 
 		# Retrieve rankings from the database
 		$t_ratings_table = plugin_table( 'support_data' );
