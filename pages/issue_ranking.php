@@ -108,10 +108,6 @@ layout_page_begin( );
 <?php
 foreach($resultset as $bugid => $data) {
 	$bug = bug_get( $bugid );
-	$countval['high'] = array_key_exists(2, $data['ratings']) ? $data['ratings'][2]['count'] : 0;
-	$countval['normal'] = array_key_exists(1, $data['ratings']) ? $data['ratings'][1]['count'] : 0;
-	$countval['low'] = array_key_exists(-1, $data['ratings']) ? $data['ratings'][-1]['count'] : 0;
-	$countval['none'] = array_key_exists(-2, $data['ratings']) ? $data['ratings'][-2]['count'] : 0;
 ?>
 					<tr>
 						<td><a href="view.php?id=<?php echo $bug->id ?>"><?php echo $bug->id ?></td>
