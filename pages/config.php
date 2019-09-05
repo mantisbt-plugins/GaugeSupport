@@ -1,7 +1,7 @@
 <?php
 auth_reauthenticate();
 access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
-layout_page_header( plugin_lang_get( 'plugin_title' ) );
+layout_page_header( plugin_lang_get( 'title' ) );
 layout_page_begin( 'config_page.php' );
 print_manage_menu();
 ?>
@@ -17,7 +17,7 @@ print_manage_menu();
 		<div class="widget-header widget-header-small">
 			<h4 class="widget-title lighter">
 				<i class="ace-icon fa fa-text-width"></i>
-				<?php echo plugin_lang_get( 'plugin_title') . ': ' . lang_get( 'plugin_format_config' )?>
+				<?php echo plugin_lang_get( 'title' ) . ': ' . lang_get( 'plugin_format_config' )?>
 			</h4>
 		</div>
 		<div class="widget-body">
