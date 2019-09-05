@@ -80,7 +80,7 @@ layout_page_begin( );
 	<div class="widget-header widget-header-small">
 		<h4 class="widget-title lighter">
 			<i class="ace-icon fa fa-text-width"></i>
-			<?php echo plugin_lang_get( 'title' ) . ': ' . plugin_lang_get( 'plugin_title' )?>
+			<?php echo plugin_lang_get( 'title' ) . ': ' . plugin_lang_get( 'ranking_title' )?>
 		</h4>
 	</div>
 
