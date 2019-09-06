@@ -3,6 +3,8 @@ auth_reauthenticate();
 access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 form_security_validate( 'GaugeSupport_config' );
 
+$t_reset = gpc_get( 'action', '' ) == 'reset';
+
 $t_redirect_url = 'manage_plugin_page.php';
 layout_page_header( null, $t_redirect_url );
 layout_page_begin();

@@ -31,6 +31,7 @@ $s_plugin_GaugeSupport_config_title = 'Configuration';
 $s_plugin_GaugeSupport_excl_status = 'Statuses to exclude from overview';
 $s_plugin_GaugeSupport_incl_severity = 'Severities to include in overview';
 $s_plugin_GaugeSupport_excl_resolution = 'Resolutions to exclude from overview';
+$s_plugin_GaugeSupport_config_reset = 'Reset defaults';
 $s_plugin_GaugeSupport_config_updated = 'Configuration updated successfully.';
 
 // supporters / opponents

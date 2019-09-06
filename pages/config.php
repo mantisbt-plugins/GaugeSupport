@@ -59,8 +59,13 @@ print_manage_menu( 'manage_plugin_page.php' );
 				</div>
 			</div>
 			<div class="widget-toolbox padding-8 clearfix">
-				<button type="submit" class="btn btn-primary btn-white btn-round">
+				<button name="action" type="submit"
+						class="btn btn-primary btn-white btn-round">
 					<?php echo lang_get( 'change_configuration' ); ?>
+				</button>
+				<button name="action" type="submit" value="reset"
+						class="btn btn-primary btn-white btn-round">
+					<?php echo plugin_lang_get( 'config_reset' ); ?>
 				</button>
 				<?php print_link_button( 'manage_plugin_page.php', lang_get( 'go_back' ) ); ?>
 			</div>
