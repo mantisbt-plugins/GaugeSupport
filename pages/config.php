@@ -3,7 +3,7 @@ auth_reauthenticate();
 access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 layout_page_header( plugin_lang_get( 'title' ) );
 layout_page_begin( 'config_page.php' );
-print_manage_menu();
+print_manage_menu( 'manage_plugin_page.php' );
 ?>
 
 <div class="col-md-12 col-xs-12">
