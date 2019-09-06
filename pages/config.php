@@ -62,6 +62,7 @@ print_manage_menu( 'manage_plugin_page.php' );
 				<button type="submit" class="btn btn-primary btn-white btn-round">
 					<?php echo lang_get( 'change_configuration' ); ?>
 				</button>
+				<?php print_link_button( 'manage_plugin_page.php', lang_get( 'go_back' ) ); ?>
 			</div>
 		</div>
 	</div>
