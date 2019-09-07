@@ -1,4 +1,25 @@
 <?php
+/**
+ * GaugeSupport - a MantisBT plugin allowing users to vote on issues.
+ *
+ * Copyright (c) 2010  Charly Kiendl
+ * Copyright (c) 2017  Cas Nuy
+ * Copyright (c) 2019  Damien Regad
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
 auth_reauthenticate();
 access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 form_security_validate( 'GaugeSupport_config' );
