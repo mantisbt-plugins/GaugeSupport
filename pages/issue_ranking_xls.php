@@ -11,7 +11,7 @@ header( 'Content-Disposition: attachment; filename="' . $t_export_title . '.xls"
 ?>
 <html xmlns:o="urn:schemas-microsoft-com:office:office"
 	  xmlns:x="urn:schemas-microsoft-com:office:excel"
-	  xmlns="http://www.w3.org/TR/REC-html40">
+	  xmlns="https://www.w3.org/TR/html401/">
 <div align=center x:publishsource="Excel">
 	<table border=0 cellpadding=0 cellspacing=0 width=100% style='border-collapse:collapse'>
 		<tr>
