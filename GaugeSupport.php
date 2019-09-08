@@ -33,7 +33,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 
 		$this->author = "Cas (based upon Charly Kiendl's work), Damien Regad";
 		$this->contact = 'Cas@nuy.info';
-		$this->url = 'http://www.nuy.info';
+		$this->url = 'https://github.com/mantisbt-plugins/GaugeSupport';
 	}
 
 	/*** Default plugin configuration.	 */
