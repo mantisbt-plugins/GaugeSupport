@@ -44,7 +44,7 @@ function install_convert_config_names() {
 		$t_value = plugin_config_get( $t_old );
 
 		# Set the new value if different than default
-		if( isset( $t_default_values[$t_new] ) && $t_value != $t_default_values[$t_new] ) {
+		if( $t_value && isset( $t_default_values[$t_new] ) && $t_value != $t_default_values[$t_new] ) {
 			plugin_config_set( $t_new, $t_value );
 		}
 
