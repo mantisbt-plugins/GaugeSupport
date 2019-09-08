@@ -126,46 +126,17 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$t_bug_table = db_get_table( 'bug' );
 
 		$t_query = "SELECT
-				max(sd.bugid) as bugid,
+				sd.bugid as bugid,
 				count(sd.rating) as no_of_ratings,
 				sum(sd.rating) as sum_of_ratings,
 				avg(sd.rating) as avg_rating,
 				max(sd.rating) as highest_rating,
-				min(sd.rating) as lowest_rating,
-				IFNULL(bm2_count,0) AS bm2_count,
-				IFNULL(bm2_sum,0) AS bm2_sum,
-				IFNULL(bm1_count,0) AS bm1_count,
-				IFNULL(bm1_sum,0) AS bm1_sum,
-				IFNULL(b2_count,0) AS b2_count,
-				IFNULL(b2_sum,0) AS b2_sum,
-				IFNULL(b1_count,0) AS b1_count,
-				IFNULL(b1_sum,0) AS b1_sum
+				min(sd.rating) as lowest_rating
 			FROM {$t_ratings_table} sd
 			INNER JOIN {$t_bug_table} b ON sd.bugid = b.id
-			LEFT OUTER JOIN (
-					SELECT bugid, count(rating) as bm2_count, sum(rating) as bm2_sum 
-					FROM {$t_ratings_table} 
-					GROUP BY bugid, rating HAVING rating = -2) bm2 
-				ON sd.bugid = bm2.bugid
-			LEFT OUTER JOIN (
-					SELECT bugid, count(rating) as bm1_count, sum(rating) as bm1_sum 
-					FROM {$t_ratings_table} 
-					GROUP BY bugid, rating 
-					HAVING rating = -1) bm1 
-				ON sd.bugid = bm1.bugid
-			LEFT OUTER JOIN (
-					SELECT bugid, count(rating) as b2_count, sum(rating) as b2_sum 
-					FROM {$t_ratings_table} 
-					GROUP BY bugid, rating HAVING rating = 2) b2 
-				ON sd.bugid = b2.bugid
-			LEFT OUTER JOIN (
-					SELECT bugid, count(rating) as b1_count, sum(rating) as b1_sum 
-					FROM {$t_ratings_table} 
-					GROUP BY bugid, rating HAVING rating = 1) b1 
-				ON sd.bugid = b1.bugid
 			{$t_where_clause}
-			GROUP BY sd.bugid, bm2_count, bm2_sum, bm1_count, bm1_sum, b2_count, b2_sum, b1_count, b1_sum
-			ORDER BY sum(sd.rating) DESC";
+			GROUP BY sd.bugid
+			ORDER BY sum(sd.rating) DESC, count(sd.rating) DESC, sd.bugid";
 		$t_result = db_query( $t_query, $t_param );
 
 		# Store rankings in an array
@@ -175,12 +146,6 @@ class GaugeSupportPlugin extends MantisPlugin {
 			$t_bug_id = intval( $t_row['bugid'] );
 
 			$t_data[$t_bug_id] = array(
-				'ratings' => array(
-					-2 => array('count' => $t_row['bm2_count'], 'sum' => $t_row['bm2_sum']),
-					-1 => array('count' => $t_row['bm1_count'], 'sum' => $t_row['bm1_sum']),
-					+1 => array('count' => $t_row['b1_count'], 'sum' => $t_row['b1_sum']),
-					+2 => array('count' => $t_row['b2_count'], 'sum' => $t_row['b2_sum']),
-				),
 				'no_of_ratings' => $t_row['no_of_ratings'],
 				'sum_of_ratings' => $t_row['sum_of_ratings'],
 				'avg_rating' => $t_row['avg_rating'],
