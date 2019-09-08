@@ -16,6 +16,8 @@ specification.
   [#19](https://github.com/mantisbt-plugins/GaugeSupport/issues/19)
 - Config page: "Reset" button to revert configs to defaults
   [#27](https://github.com/mantisbt-plugins/GaugeSupport/issues/27)
+- Support for PostgreSQL (and probably MSSQL and Oracle as well)
+  [#4](https://github.com/mantisbt-plugins/GaugeSupport/issues/4)
 
 ### Changed
 
