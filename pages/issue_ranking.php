@@ -43,12 +43,12 @@ layout_page_begin( );
 				<table class="table table-bordered table-condensed table-striped">
 					<tr>
 						<th><?php echo lang_get( 'id' ); ?></th>
-						<th><?php echo lang_get( 'summary' ); ?></th>
-						<th><?php echo plugin_lang_get( 'rating_count' ); ?></th>
-						<th><?php echo plugin_lang_get( 'ACS_label' ); ?></th>
-						<th><?php echo plugin_lang_get( 'ASPU_label' ); ?></th>
-						<th><?php echo plugin_lang_get( 'rating_high' ); ?></th>
-						<th><?php echo plugin_lang_get( 'rating_low' ); ?></th>
+						<th class=""><?php echo lang_get( 'summary' ); ?></th>
+						<th class="width-13"><?php echo plugin_lang_get( 'rating_count' ); ?></th>
+						<th class="width-13"><?php echo plugin_lang_get( 'ACS_label' ); ?></th>
+						<th class="width-13"><?php echo plugin_lang_get( 'ASPU_label' ); ?></th>
+						<th class="width-13"><?php echo plugin_lang_get( 'rating_high' ); ?></th>
+						<th class="width-13"><?php echo plugin_lang_get( 'rating_low' ); ?></th>
 					</tr>
 <?php
 foreach( $t_ratings as $bugid => $data) {
@@ -57,11 +57,11 @@ foreach( $t_ratings as $bugid => $data) {
 					<tr>
 						<td><?php print_bug_link( $bug->id ); ?></td>
 						<td><?php echo string_display_line( $bug->summary ) ?></td>
-						<td><?php echo $data['no_of_ratings'] ?></td>
-						<td><?php echo $data['sum_of_ratings'] ?></td>
-						<td><?php echo $data['avg_rating'] ?></td>
-						<td><?php echo $data['highest_rating'] ?></td>
-						<td><?php echo $data['lowest_rating'] ?></td>
+						<td class="align-right"><?php echo $data['no_of_ratings'] ?></td>
+						<td class="align-right"><?php echo $data['sum_of_ratings'] ?></td>
+						<td class="align-right"><?php echo $data['avg_rating'] ?></td>
+						<td class="align-right"><?php echo $data['highest_rating'] ?></td>
+						<td class="align-right"><?php echo $data['lowest_rating'] ?></td>
 					</tr>
 <?php
 }
