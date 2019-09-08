@@ -37,8 +37,15 @@ if( db_num_rows( $dboutput ) ) {
 		$row_uid = $row['userid'];
 		$row_rating = $row['rating'];
 		($row_rating > 0)? $type = &$supporters : $type = &$opponents;
-		$class = (user_get_field( $row_uid, 'access_level' ) >= DEVELOPER) ? 'dev' : 'normal';
-		array_push($type, prepare_user_name( $row_uid ) );
+
+		$t_user = prepare_user_name( $row_uid );
+		# Users with access level >= DEVELOPER are shown in bold
+		if(    user_exists( $row_uid )
+			&& user_get_field( $row_uid, 'access_level' ) >= DEVELOPER
+		) {
+			$t_user = "<strong>$t_user</strong>";
+		}
+		array_push($type, $t_user );
 
 		if( $row_uid == auth_get_current_user_id() ) {
 			$t_active_rating = (int)$row_rating;
