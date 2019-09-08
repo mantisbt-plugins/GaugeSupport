@@ -25,10 +25,14 @@ $s_plugin_GaugeSupport_block_title = 'Issue Community Support';
 $s_plugin_GaugeSupport_ranking_title = 'Community Support Ranking for {project} issues';
 $s_plugin_GaugeSupport_ranking_pos_title = 'Highest-Supported {project} Issues';
 $s_plugin_GaugeSupport_ranking_neg_title = 'Lowest-Supported {project} Issues';
-$s_plugin_GaugeSupport_plugin_title = 'Community Support Ranking for issues';
+
+// Config page
+$s_plugin_GaugeSupport_config_title = 'Configuration';
 $s_plugin_GaugeSupport_excl_status = 'Statuses to exclude from overview';
 $s_plugin_GaugeSupport_incl_severity = 'Severities to include in overview';
 $s_plugin_GaugeSupport_excl_resolution = 'Resolutions to exclude from overview';
+$s_plugin_GaugeSupport_config_reset = 'Reset defaults';
+$s_plugin_GaugeSupport_config_updated = 'Configuration updated successfully.';
 
 // supporters / opponents
 $s_plugin_GaugeSupport_supporters = 'Supporters';
