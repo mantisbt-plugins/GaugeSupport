@@ -4,19 +4,20 @@ if(current_user_is_anonymous()){
 	return;
 }
 
-$current= explode(",", plugin_config_get( 'gaugesupport_excl_resolution' ));
-if(in_array(bug_get_field($bugid, 'resolution'),$current)){
-	return;
-}
+# Retrieve all configs
+$t_plugin = plugin_get();
+$t_configs = $t_plugin->config();
 
-$current= explode(",", plugin_config_get( 'gaugesupport_incl_severity' ));
-if(!in_array(bug_get_field($bugid, 'severity'),$current)){
-	return;
-}
+/** @var integer $bugid */
+foreach( array_keys( $t_configs ) as $t_config ) {
+	$t_values = explode( ',', plugin_config_get( $t_config ) );
+	list($t_type, $t_field) = explode( '_', $t_config );
 
-$current= explode(",", plugin_config_get( 'gaugesupport_excl_status' ));
-if(in_array(bug_get_field($bugid, 'status'),$current)){
-	return;
+	$t_is_in_values = in_array( bug_get_field( $bugid, $t_field ), $t_values );
+
+	if( $t_type == 'incl' xor $t_is_in_values ) {
+		return;
+	}
 }
 
 # RETRIEVE RATINGS DATA

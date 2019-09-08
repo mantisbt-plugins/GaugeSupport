@@ -9,13 +9,21 @@ $t_redirect_url = 'manage_plugin_page.php';
 layout_page_header( null, $t_redirect_url );
 layout_page_begin();
 
-$f_excl_status = gpc_get_string_array( 'excl_status' );
-$f_incl_severity = gpc_get_string_array( 'incl_severity' );
-$f_excl_resolution = gpc_get_string_array( 'excl_resolution' );
+# Retrieve all configs
+$t_plugin = plugin_get();
+$t_configs = $t_plugin->config();
 
-plugin_config_set('gaugesupport_excl_status', implode( ",", $f_excl_status) );
-plugin_config_set('gaugesupport_incl_severity', implode( ",", $f_incl_severity) );
-plugin_config_set('gaugesupport_excl_resolution', implode( ",", $f_excl_resolution) );
+foreach( array_keys( $t_configs ) as $t_config ) {
+	$f_value = gpc_get_string_array( $t_config, array() );
+	$t_value = implode( ',', $f_value );
+
+	# If config is different than default then set the new value, otherwise delete it
+	if( $t_value != $t_configs[$t_config] ) {
+		plugin_config_set( $t_config, $t_value );
+	} else {
+		plugin_config_delete( $t_config );
+	}
+}
 
 html_operation_successful(
 	$t_redirect_url,
