@@ -80,7 +80,7 @@ foreach( $t_ratings as $bugid => $data) {
 						<td><?php echo string_display_line( $bug->summary ) ?></td>
 						<td class="align-right"><?php echo $data['no_of_ratings'] ?></td>
 						<td class="align-right"><?php echo $data['sum_of_ratings'] ?></td>
-						<td class="align-right"><?php echo $data['avg_rating'] ?></td>
+						<td class="align-right"><?php echo number_format( $data['avg_rating'], 4 ) ?></td>
 						<td class="align-right"><?php echo $data['highest_rating'] ?></td>
 						<td class="align-right"><?php echo $data['lowest_rating'] ?></td>
 					</tr>
