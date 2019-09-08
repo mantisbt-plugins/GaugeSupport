@@ -10,7 +10,62 @@ specification.
 
 ## [Unreleased] 
 
-**TODO**
+### Added
+
+- New 'withdraw vote' button
+  [#19](https://github.com/mantisbt-plugins/GaugeSupport/issues/19)
+- Config page: "Reset" button to revert configs to defaults
+  [#27](https://github.com/mantisbt-plugins/GaugeSupport/issues/27)
+
+### Changed
+
+- Updated README file and screenshots
+  [#1](https://github.com/mantisbt-plugins/GaugeSupport/issues/1)
+- New default values for Severity config
+  [#17](https://github.com/mantisbt-plugins/GaugeSupport/issues/17)
+- Use language strings for plugin title & description
+  [#22](https://github.com/mantisbt-plugins/GaugeSupport/issues/22)
+- Fix and improve gauge form layout
+  [#11](https://github.com/mantisbt-plugins/GaugeSupport/issues/11)
+- Mark developers and higher in bold font
+  [#24](https://github.com/mantisbt-plugins/GaugeSupport/issues/24)
+- Use standard MantisBT core functions and avoid code duplication
+  [#15](https://github.com/mantisbt-plugins/GaugeSupport/issues/15)
+- Redirect to Manage Plugins page after config update
+  [#26](https://github.com/mantisbt-plugins/GaugeSupport/issues/26)
+- Improve layout for Rankings page
+  [#18](https://github.com/mantisbt-plugins/GaugeSupport/issues/18)
+- Use language strings for column labels
+  [#22](https://github.com/mantisbt-plugins/GaugeSupport/issues/22)
+- Renamed config options
+  [#29](https://github.com/mantisbt-plugins/GaugeSupport/issues/29)
+- Miscellaneous code cleanup and layout improvements
+
+### Fixed
+
+- Deprecated MantisBT API calls
+  [#12](https://github.com/mantisbt-plugins/GaugeSupport/issues/12)
+- Application warning when processing a non-existing user
+  [#25](https://github.com/mantisbt-plugins/GaugeSupport/issues/25)
+- Excel download does not work on Apache
+  [#20](https://github.com/mantisbt-plugins/GaugeSupport/issues/20)
+- "No data" alert on Ranking page is not working
+  [#21](https://github.com/mantisbt-plugins/GaugeSupport/issues/21)
+- Do not require MySQL SUPER privileges to execute
+  [#10](https://github.com/mantisbt-plugins/GaugeSupport/issues/10)
+- Issue ranking page does not filter by severity
+  [#23](https://github.com/mantisbt-plugins/GaugeSupport/issues/23)
+- SQL error if config is not set
+  [#28](https://github.com/mantisbt-plugins/GaugeSupport/issues/28)
+- Missing license information
+  [#31](https://github.com/mantisbt-plugins/GaugeSupport/issues/31)
+
+### Security
+
+- CSRF protection to forms
+  [#16](https://github.com/mantisbt-plugins/GaugeSupport/issues/16)
+- Prevent potential XSS attacks on Rankings page
+  [#30](https://github.com/mantisbt-plugins/GaugeSupport/issues/30)
 
 
 ## [2.04] - 2019-01-20
