@@ -31,7 +31,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 			'MantisCore' => '2.0.0',
 			);
 
-		$this->author = 'Cas (based upon Renegade@RenegadeProjects.com)';
+		$this->author = "Cas (based upon Charly Kiendl's work), Damien Regad";
 		$this->contact = 'Cas@nuy.info';
 		$this->url = 'http://www.nuy.info';
 	}
