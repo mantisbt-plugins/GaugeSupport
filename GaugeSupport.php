@@ -136,7 +136,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 			INNER JOIN {$t_bug_table} b ON sd.bugid = b.id
 			{$t_where_clause}
 			GROUP BY sd.bugid
-			ORDER BY sum(sd.rating) DESC";
+			ORDER BY sum(sd.rating) DESC, count(sd.rating) DESC, sd.bugid";
 		$t_result = db_query( $t_query, $t_param );
 
 		# Store rankings in an array
