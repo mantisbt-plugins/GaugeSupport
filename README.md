@@ -17,9 +17,6 @@ Allows users to vote on issues.
 ## Requirements
 
 - MantisBT 2.0.0
-- MySQL or MariaDB  
-  Currently, other database platforms are not supported, as the plugin relies on
-  specific SQL syntax.
 
 
 ## Installation
@@ -37,7 +34,7 @@ Allows users to vote on issues.
 You can specify which issues the users will be able to vote on, based on the
 following criteria:
 
-- **Status**: by default, _resolved_ and _closed are excluded
+- **Status**: by default, _resolved_ and _closed_ are excluded
 - **Resolution**: by default, all resolutions except _open_, _reopened_ and
   _suspended_ are excluded 
 - **Severity**: includes _feature_, _minor_, _major_, _crash_ and _block_
@@ -89,10 +86,3 @@ written by Charly Kiendl (EvilRenegade) back in 2010.
 It was updated to work on MantisBT 2.x by Cas Nuy in 2017.
 
 Damien Regad gave it a complete overhaul in 2019.
-
-
-## Roadmap
-
-- Add PostgreSQL compatibility. Currently this support is available via 
-  [eazrael's fork](https://github.com/eazrael/GaugeSupport).
-
