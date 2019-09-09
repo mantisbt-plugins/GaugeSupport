@@ -39,7 +39,7 @@ foreach( array_keys( $t_configs ) as $t_config ) {
 	$t_value = implode( ',', $f_value );
 
 	# If config is different than default then set the new value, otherwise delete it
-	if( $t_value != $t_configs[$t_config] ) {
+	if( !$t_reset && $t_value != $t_configs[$t_config] ) {
 		plugin_config_set( $t_config, $t_value );
 	} else {
 		plugin_config_delete( $t_config );
