@@ -55,14 +55,14 @@ class GaugeSupportPlugin extends MantisPlugin {
 			array(
 				'title' => plugin_lang_get( 'menu_link' ),
 				'access_level' => '',
-				'url' => 'plugin.php?page=GaugeSupport/issue_ranking',
+				'url' => plugin_page( 'issue_ranking', true ),
 				'icon' => 'fa-line-chart'
 			),
 		);
 	}
 
 	function renderBugSnippet($p_event, $bugid) {
-		include 'plugins/GaugeSupport/pages/gauge_form.php';
+		include 'plugins/' . plugin_get_current() . '/pages/gauge_form.php';
 	}
 	
 	function schema() {
