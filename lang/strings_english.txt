@@ -49,7 +49,6 @@ $s_plugin_GaugeSupport_do_it_never = 'strong rejection';
 $s_plugin_GaugeSupport_already_resolved = 'This issue is already marked as resolved.<br>If you feel that is not the case, please reopen it and explain why.';
 
 // ranking
-$s_plugin_GaugeSupport_menu_link = 'Issue Support Ranking';
 $s_plugin_GaugeSupport_ranking_title = 'Community Support Ranking for Issues';
 $s_plugin_GaugeSupport_excel_download = 'Excel Download';
 $s_plugin_GaugeSupport_sup_sta_dis = 'Support Stance Distribution';
