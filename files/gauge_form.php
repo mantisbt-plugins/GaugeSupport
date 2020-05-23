@@ -32,6 +32,13 @@ if( !$t_plugin->isVotingAllowed( $bugid ) ) {
 }
 
 # RETRIEVE RATINGS DATA
+$t_ratings = array(
+	+2 => 'do_it_now',
+	+1 => 'do_it_later',
+	-1 => 'do_it_last',
+	-2 => 'do_it_never',
+);
+
 $dbtable = plugin_table("support_data");
 $dbquery = "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";
 $dboutput = db_query($dbquery);
@@ -39,6 +46,8 @@ $dboutput = db_query($dbquery);
 $supporters = array();
 $opponents = array();
 $t_active_rating = 0;
+$t_acs = $t_aspu = 0;
+$t_stats = array_fill_keys( array_keys( $t_ratings ), 0 );
 
 if( db_num_rows( $dboutput ) ) {
 	# @TODO retrieving data should be done with MantisBT API
@@ -48,6 +57,9 @@ if( db_num_rows( $dboutput ) ) {
 	foreach($data as $row) {
 		$row_uid = $row['userid'];
 		$row_rating = $row['rating'];
+		$t_stats[$row_rating]++;
+		$t_acs += $row_rating;
+
 		($row_rating > 0)? $type = &$supporters : $type = &$opponents;
 
 		$t_user = prepare_user_name( $row_uid );
@@ -63,6 +75,7 @@ if( db_num_rows( $dboutput ) ) {
 			$t_active_rating = (int)$row_rating;
 		}
 	}
+	$t_aspu = $t_acs / count( $data );
 }
 
 if( $supporters ) {
@@ -100,16 +113,34 @@ $t_ratings = array(
 		<div class="widget-main no-padding table-responsive">
 			<table class="table table-bordered table-condensed table-striped">
 				<tr>
-					<th class="category" width="15%">
+					<th class="category" width="25%">
 						<?php echo plugin_lang_get( 'supporters' ); ?>
 					</th>
-					<td colspan=3><?php echo $supporters ?></td>
+					<td><?php echo $supporters ?></td>
 				</tr>
 				<tr>
 					<th class="category">
 						<?php echo plugin_lang_get( 'opponents' ); ?>
 					</th>
-					<td colspan=3><?php echo $opponents ?></td>
+					<td><?php echo $opponents ?></td>
+				</tr>
+				<tr>
+					<th class="category">
+						<?php echo plugin_lang_get( 'rating_count' ); ?>
+					</th>
+					<td><?php echo count( $data ); ?></td>
+				</tr>
+				<tr>
+					<th class="category">
+						<?php echo plugin_lang_get( 'ACS_label' ); ?>
+					</th>
+					<td><?php echo $t_acs; ?></td>
+				</tr>
+				<tr>
+					<th class="category">
+						<?php echo plugin_lang_get( 'ASPU_label' ); ?>
+					</th>
+					<td><?php echo number_format( $t_aspu, 4 ); ?></td>
 				</tr>
 			</table>
 		</div>
