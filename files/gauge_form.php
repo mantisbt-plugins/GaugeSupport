@@ -89,12 +89,12 @@ if( $opponents ) {
 	$opponents = plugin_lang_get( 'no_opponents' );
 }
 
-$t_ratings = array(
-	+2 => 'do_it_now',
-	+1 => 'do_it_later',
-	-1 => 'do_it_last',
-	-2 => 'do_it_never',
+# Chart data
+$t_chart_labels = json_encode(
+	array_map( 'plugin_lang_get', array_values( $t_ratings ) )
 );
+$t_chart_values = json_encode( array_values( $t_stats ) );
+
 ?>
 
 <div class="col-md-12 col-xs-12">
@@ -109,8 +109,17 @@ $t_ratings = array(
 		</h4>
 	</div>
 
+	<div class="padding-8 pull-right position-relative">
+		<canvas id="issue_gauge"
+				width="400"
+				data-labels="<?php echo htmlspecialchars( $t_chart_labels, ENT_QUOTES ) ?>"
+				data-values="<?php echo htmlspecialchars( $t_chart_values, ENT_QUOTES ) ?>"
+		>
+		</canvas>
+	</div>
+
 	<div class="widget-body">
-		<div class="widget-main no-padding table-responsive">
+		<div id="gauge_rankings" class="widget-main no-padding table-responsive">
 			<table class="table table-bordered table-condensed table-striped">
 				<tr>
 					<th class="category" width="25%">

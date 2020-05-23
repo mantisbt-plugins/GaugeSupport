@@ -29,6 +29,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$this->version = '2.5.0';
 		$this->requires = array(
 			'MantisCore' => '2.0.0',
+			'MantisGraph' => '2.0.0, <2.8.0',
 			);
 
 		$this->author = "Cas (based upon Charly Kiendl's work), Damien Regad";
@@ -47,10 +48,19 @@ class GaugeSupportPlugin extends MantisPlugin {
 	
 	function hooks() {
 		return array(
+			'EVENT_LAYOUT_RESOURCES' => 'resources',
 			'EVENT_MENU_MAIN' => 'menuLinks',
 			'EVENT_MENU_ISSUE' => 'issueVoteLink',
 			'EVENT_VIEW_BUG_EXTRA' => 'renderBugSnippet',
 		);
+	}
+
+	/**
+	 * Include javascript for chart.js
+	 * @return void
+	 */
+	function resources() {
+		echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
 	}
 
 	function menuLinks($p_event) {
