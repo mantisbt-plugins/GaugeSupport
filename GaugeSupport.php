@@ -156,4 +156,25 @@ class GaugeSupportPlugin extends MantisPlugin {
 		
 		return $t_data;
 	}
+
+	/**
+	 * Return true if voting is allowed for the given issue.
+	 *
+	 * @param int $p_bug_id
+	 *
+	 * @return bool
+	 */
+	public function isVotingAllowed( $p_bug_id ) {
+		foreach (array_keys($this->config()) as $t_config) {
+			$t_values = explode(',', plugin_config_get($t_config));
+			list($t_type, $t_field) = explode('_', $t_config);
+
+			$t_is_in_values = in_array(bug_get_field($p_bug_id, $t_field), $t_values);
+
+			if ($t_type == 'incl' xor $t_is_in_values) {
+				return false;
+			}
+		}
+		return true;
+	}
 }
