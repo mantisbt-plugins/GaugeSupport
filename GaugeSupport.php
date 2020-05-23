@@ -45,10 +45,12 @@ class GaugeSupportPlugin extends MantisPlugin {
 			);
 	} 
 	
-	function init() {
-		plugin_event_hook('EVENT_MENU_MAIN' , 'menuLinks');
-		plugin_event_hook('EVENT_MENU_ISSUE' , 'issueVoteLink');
-		plugin_event_hook('EVENT_VIEW_BUG_EXTRA', 'renderBugSnippet');
+	function hooks() {
+		return array(
+			'EVENT_MENU_MAIN' => 'menuLinks',
+			'EVENT_MENU_ISSUE' => 'issueVoteLink',
+			'EVENT_VIEW_BUG_EXTRA' => 'renderBugSnippet',
+		);
 	}
 
 	function menuLinks($p_event) {
