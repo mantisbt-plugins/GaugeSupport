@@ -62,7 +62,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 	}
 
 	function renderBugSnippet($p_event, $bugid) {
-		include 'plugins/' . plugin_get_current() . '/pages/gauge_form.php';
+		include plugin_file_path( 'gauge_form.php', $this->basename );
 	}
 	
 	function schema() {
