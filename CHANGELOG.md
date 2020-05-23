@@ -20,6 +20,8 @@ specification.
   [#4](https://github.com/mantisbt-plugins/GaugeSupport/issues/4)
 - Russian translation
   [#35](https://github.com/mantisbt-plugins/GaugeSupport/issues/35)
+- View Issue Page button to jump to the voting section 
+  [#34](https://github.com/mantisbt-plugins/GaugeSupport/issues/34)
 
 ### Changed
 

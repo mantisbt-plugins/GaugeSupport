@@ -47,6 +47,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 	
 	function init() {
 		plugin_event_hook('EVENT_MENU_MAIN' , 'menuLinks');
+		plugin_event_hook('EVENT_MENU_ISSUE' , 'issueVoteLink');
 		plugin_event_hook('EVENT_VIEW_BUG_EXTRA', 'renderBugSnippet');
 	}
 
@@ -59,6 +60,21 @@ class GaugeSupportPlugin extends MantisPlugin {
 				'icon' => 'fa-line-chart'
 			),
 		);
+	}
+
+	/**
+	 * Event hook to display the voting button on View Issue page if necessary.
+	 *
+	 * @param string $p_event  Event ID
+	 * @param int    $p_bug_id Bug ID
+	 *
+	 * @return array
+	 */
+	function issueVoteLink( $p_event, $p_bug_id ) {
+		if( $this->isVotingAllowed( $p_bug_id ) ) {
+			return array( plugin_lang_get( 'title' ) => '#rating' );
+		}
+		return array();
 	}
 
 	function renderBugSnippet($p_event, $bugid) {
