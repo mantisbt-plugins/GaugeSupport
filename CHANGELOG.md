@@ -18,6 +18,8 @@ specification.
   [#27](https://github.com/mantisbt-plugins/GaugeSupport/issues/27)
 - Support for PostgreSQL (and probably MSSQL and Oracle as well)
   [#4](https://github.com/mantisbt-plugins/GaugeSupport/issues/4)
+- Russian translation
+  [#35](https://github.com/mantisbt-plugins/GaugeSupport/issues/35)
 
 ### Changed
 
@@ -42,6 +44,8 @@ specification.
 - Renamed config options
   [#29](https://github.com/mantisbt-plugins/GaugeSupport/issues/29)
 - Miscellaneous code cleanup and layout improvements
+- Use Plugin API instead of hardcoded paths
+  [#32](https://github.com/mantisbt-plugins/GaugeSupport/issues/32)
 
 ### Fixed
 
@@ -61,6 +65,8 @@ specification.
   [#28](https://github.com/mantisbt-plugins/GaugeSupport/issues/28)
 - Missing license information
   [#31](https://github.com/mantisbt-plugins/GaugeSupport/issues/31)
+- Removed duplicate language string
+  [#33](https://github.com/mantisbt-plugins/GaugeSupport/issues/33)
 
 ### Security
 
