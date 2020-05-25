@@ -109,6 +109,7 @@ $t_chart_values = json_encode( array_values( $t_stats ) );
 		</h4>
 	</div>
 
+<?php if( $t_plugin->isChartJsAvailable() ) { ?>
 	<div class="padding-8 pull-right position-relative">
 		<canvas id="issue_gauge"
 				width="400"
@@ -117,6 +118,7 @@ $t_chart_values = json_encode( array_values( $t_stats ) );
 		>
 		</canvas>
 	</div>
+<?php } ?>
 
 	<div class="widget-body">
 		<div id="gauge_rankings" class="widget-main no-padding table-responsive">
@@ -166,9 +168,9 @@ $t_chart_values = json_encode( array_values( $t_stats ) );
 ?>
 			<label class="inline padding-right-8" for="<?php echo $t_input ?>">
 				<input name="stance" id="<?php echo $t_input ?>"
-				       type="radio" class="ace input-sm"
-				       value="<?php echo $value; ?>"
-				       <?php check_checked( $value, $t_active_rating ); ?>
+					   type="radio" class="ace input-sm"
+					   value="<?php echo $value; ?>"
+					   <?php check_checked( $value, $t_active_rating ); ?>
 				/>
 				<span class="lbl padding-6">
 					<?php echo plugin_lang_get( $label ); ?>

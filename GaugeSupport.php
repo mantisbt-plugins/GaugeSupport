@@ -22,6 +22,14 @@
 
 class GaugeSupportPlugin extends MantisPlugin {
 
+	const MANTISGRAPH = 'MantisGraph';
+	const MANTISGRAPH_VERSION = '2.0.0, <2.8.0';
+
+	/**
+	 * @var bool $mantisgraph_loaded True if MantisGraph plugin is available
+	 */
+	private $mantisgraph_loaded = false;
+	
 	function register() {
 		$this->name = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
@@ -29,8 +37,12 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$this->version = '2.5.0';
 		$this->requires = array(
 			'MantisCore' => '2.0.0',
-			'MantisGraph' => '2.0.0, <2.8.0',
 			);
+
+		# MantisGraph required so we don't need to bundle chart.js ourselves
+		$this->uses = array(
+			self::MANTISGRAPH => self::MANTISGRAPH_VERSION,
+		);
 
 		$this->author = "Cas (based upon Charly Kiendl's work), Damien Regad";
 		$this->contact = 'Cas@nuy.info';
@@ -56,11 +68,49 @@ class GaugeSupportPlugin extends MantisPlugin {
 	}
 
 	/**
-	 * Include javascript for chart.js
+	 * Initialize plugin
+	 *
+	 * Check soft dependency on MantisGraph plugin.
+	 */
+	public function init() {
+		if( plugin_is_registered( self::MANTISGRAPH ) ) {
+			$t_version_check = plugin_dependency(
+				self::MANTISGRAPH,
+				self::MANTISGRAPH_VERSION
+			);
+			$this->mantisgraph_loaded = $t_version_check == 1;
+		}
+		if( !$this->mantisgraph_loaded ) {
+			log_event( LOG_PLUGIN, $this->missingMantisGraph() );
+		}
+	}
+
+	/**
+	 * @return string
+	 */
+	public function missingMantisGraph() {
+		return sprintf(
+			plugin_lang_get( 'mantisgraph_missing' ),
+			self::MANTISGRAPH_VERSION
+		);
+	}
+
+	/**
+	 * Include javascript for chart.js if needed.
+	 *
+	 * Scripts are only loaded on pages that need them (currently, view.php).
+	 *
 	 * @return void
 	 */
 	function resources() {
 		echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
+	}
+
+	/**
+	 * @return bool True if ChartJs library is available;
+	 */
+	public function isChartJsAvailable() {
+		return $this->mantisgraph_loaded;
 	}
 
 	function menuLinks($p_event) {
