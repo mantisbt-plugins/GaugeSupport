@@ -8,7 +8,7 @@ specification.
 
 --------------------------------------------------------------------------------
 
-## [Unreleased] 
+## [2.5.0] - 2020-05-25 
 
 ### Added
 
@@ -128,8 +128,9 @@ specification.
 - Initial release by EvilRenegade
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.04...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.5.0...HEAD
 
+[2.5.0]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.04....v2.5.0
 [2.04]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.03...v2.04
 [2.03]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.02...v2.03
 [2.02]: https://github.com/mantisbt-plugins/GaugeSupport/commit/v2.02
