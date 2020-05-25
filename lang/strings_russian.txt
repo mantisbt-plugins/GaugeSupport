@@ -1,0 +1,64 @@
+<?php
+/**
+ * GaugeSupport - a MantisBT plugin allowing users to vote on issues.
+ *
+ * Copyright (c) 2010  Charly Kiendl
+ * Copyright (c) 2017  Cas Nuy
+ * Copyright (c) 2019  Damien Regad
+ *
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ *
+ * This program is distributed in the hope that it will be useful,
+ * but WITHOUT ANY WARRANTY; without even the implied warranty of
+ * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ * GNU General Public License for more details.
+ *
+ * You should have received a copy of the GNU General Public License
+ * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ */
+
+// Общие заголовки
+$s_plugin_GaugeSupport_title = 'Рейтинг Поддержки';
+$s_plugin_GaugeSupport_description = 'Предоставляет членам сообщества возможность голосовать за более высокий или более низкий приоритет развития вопроса.';
+$s_plugin_GaugeSupport_menu_link = 'Рейтинг поддержки проблемы';
+
+// Страница конфигурации
+$s_plugin_GaugeSupport_config_title = 'Конфигурация';
+$s_plugin_GaugeSupport_excl_status = 'Статусы для исключения из обзора';
+$s_plugin_GaugeSupport_incl_severity = 'Серьезность для включения в обзор';
+$s_plugin_GaugeSupport_excl_resolution = 'Решения для исключения из обзора';
+$s_plugin_GaugeSupport_config_reset = 'Сброс настроек по умолчанию';
+$s_plugin_GaugeSupport_config_updated = 'Конфигурация успешно обновлена.';
+
+// Сторонники / Противники
+$s_plugin_GaugeSupport_supporters = 'Сторонники';
+$s_plugin_GaugeSupport_opponents = 'Соперники';
+$s_plugin_GaugeSupport_no_supporters = 'Пока никто явно не поддерживает этот запрос.';
+$s_plugin_GaugeSupport_no_opponents = 'Пока никто прямо не возражает против этого запроса.';
+
+// Голосование
+$s_plugin_GaugeSupport_submit_text = 'Объявите свою позицию!';
+$s_plugin_GaugeSupport_withdraw = 'Снять голосование';
+$s_plugin_GaugeSupport_do_it_now = 'сильная поддержка';
+$s_plugin_GaugeSupport_do_it_later = 'склонен в пользу';
+$s_plugin_GaugeSupport_do_it_last = 'склонен против';
+$s_plugin_GaugeSupport_do_it_never = 'сильный отказ';
+$s_plugin_GaugeSupport_already_resolved = 'Этот запрос уже помечен как решенный.<br> Если вы считаете, что это не так, повторно откройте ее и объясните, почему.';
+
+// Рейтинг
+$s_plugin_GaugeSupport_ranking_title = 'Рейтинг поддержки сообщества по вопросам';
+$s_plugin_GaugeSupport_excel_download = 'Excel Скачать';
+$s_plugin_GaugeSupport_sup_sta_dis = 'Распределение позиции поддержки';
+$s_plugin_GaugeSupport_rating_count = 'Подсчет рейтингов';
+$s_plugin_GaugeSupport_rating_high = 'Самый высокий рейтинг';
+$s_plugin_GaugeSupport_rating_low = 'Самый низкий рейтинг';
+$s_plugin_GaugeSupport_ACS_abbr = 'ACS';
+$s_plugin_GaugeSupport_ACS_label = 'Абсолютная поддержка сообщества';
+$s_plugin_GaugeSupport_ASPU_abbr = 'ASPU';
+$s_plugin_GaugeSupport_ASPU_label = 'Средняя поддержка на пользователя';
+$s_plugin_GaugeSupport_show_all_pos = '&raquo; Показать все {project} запросы, наиболее поддерживаемые в первую очередь';
+$s_plugin_GaugeSupport_show_all_neg = '&raquo; Показать все {project} запросы, с самым низким уровенем поддержки в первую очередь';
+$s_plugin_GaugeSupport_no_data = 'Для создания отчета недостаточно данных.';
