@@ -23,7 +23,7 @@
 class GaugeSupportPlugin extends MantisPlugin {
 
 	const MANTISGRAPH = 'MantisGraph';
-	const MANTISGRAPH_VERSION = '2.0.0, <2.8.0';
+	const MANTISGRAPH_VERSION = '2.25.0';
 
 	/**
 	 * @var bool $mantisgraph_loaded True if MantisGraph plugin is available
@@ -103,7 +103,13 @@ class GaugeSupportPlugin extends MantisPlugin {
 	 * @return void
 	 */
 	function resources() {
-		echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
+		$t_page = basename( $_SERVER['SCRIPT_FILENAME'] );
+		if( $this->mantisgraph_loaded && $t_page == 'view.php' ) {
+			$t_mantisgraph = plugin_get( self::MANTISGRAPH );
+			$t_mantisgraph->include_chartjs();
+
+			echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
+		}
 	}
 
 	/**
