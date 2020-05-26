@@ -12,15 +12,20 @@ $(document).ready( function() {
                 labels: $(this).data('labels'),
                 datasets: [{
                     data: $(this).data('values'),
-                    borderWidth: 1,
-                    backgroundColor: ['#d7191c', '#fdae61', '#a6d96a', '#1a9641']
+                    borderWidth: 1
                 }]
             },
             options: {
                 legend: {
                     position: 'right'
                 },
-                maintainAspectRatio: false
+                maintainAspectRatio: false,
+                plugins: {
+                    colorschemes: {
+                        scheme: 'brewer.RdYlGn4',
+                        reverse: true
+                    }
+                }
             }
         });
     });
