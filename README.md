@@ -17,6 +17,7 @@ Allows users to vote on issues.
 ## Requirements
 
 - MantisBT 2.0.0
+- MantisGraph plugin 2.25.0 (optional, to display charts)
 
 
 ## Installation
@@ -26,8 +27,10 @@ Allows users to vote on issues.
 2. Create a new directory `GaugeSupport` (case-sensitive) under MantisBT's 
    `/plugins` directory
 3. Extract all files into the new directory
-4. Go to _Manage / Manage Plugins_ and install the plugin.
-5. [Configure](#Configuration) the plugin as appropriate
+4. Go to _Manage / Manage Plugins_ and install the plugin
+5. If you want to display voting statistics charts, make sure that the 
+   _MantisGraph_ core plugin is installed 
+6. [Configure](#Configuration) the plugin as appropriate
 
 ### Configuration
 
@@ -50,7 +53,9 @@ following criteria:
 On the _View Issue Details page_, a new **Gauge Support section** is added,  
 allowing users to :
 
-- see who voted for (or against) the issue, and
+- see who voted for (or against) the issue,
+- review voting statistics, including a pie chart (if the MantisGraph plugin
+  is installed), and
 - cast their vote (with 2 levels of support or rejection, +2/+1/-1/-2) 
   or withdraw it.
 
