@@ -22,6 +22,8 @@
 
 class GaugeSupportPlugin extends MantisPlugin {
 
+	const VERSION = '2.6.0';
+
 	const MANTISGRAPH = 'MantisGraph';
 	const MANTISGRAPH_VERSION = '2.25.0';
 
@@ -34,7 +36,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$this->name = plugin_lang_get( 'title' );
 		$this->description = plugin_lang_get( 'description' );
 		$this->page = 'config';
-		$this->version = '2.5.0';
+		$this->version = self::VERSION;
 		$this->requires = array(
 			'MantisCore' => '2.0.0',
 			);
