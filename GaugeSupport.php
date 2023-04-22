@@ -159,7 +159,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 	}
 
 	function schema() {
-		require_once( 'install.php' );
+		require_once( __DIR__ . '/install.php' );
 
 		return array(
 			0 => array( "CreateTableSQL",
