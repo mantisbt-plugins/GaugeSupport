@@ -32,6 +32,7 @@ $s_plugin_GaugeSupport_incl_severity = 'Severities to include in overview';
 $s_plugin_GaugeSupport_excl_resolution = 'Resolutions to exclude from overview';
 $s_plugin_GaugeSupport_config_reset = 'Reset defaults';
 $s_plugin_GaugeSupport_config_updated = 'Configuration updated successfully.';
+$s_plugin_GaugeSupport_mantisgraph_missing = 'Install MantisGraph version %s or later to view charts.';
 
 // supporters / opponents
 $s_plugin_GaugeSupport_supporters = 'Supporters';

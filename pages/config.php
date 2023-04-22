@@ -25,11 +25,19 @@ access_ensure_global_level( config_get( 'manage_plugin_threshold' ) );
 layout_page_header( plugin_lang_get( 'title' ) );
 layout_page_begin( 'config_page.php' );
 print_manage_menu( 'manage_plugin_page.php' );
+
+$t_plugin = plugin_get();
 ?>
 
 <div class="col-md-12 col-xs-12">
 <div class="space-10"></div>
 <div class="form-container">
+
+<?php if( !$t_plugin->isChartJsAvailable() ) { ?>
+<div class="alert alert-warning">
+    <?php echo $t_plugin->missingMantisGraph(); ?>
+</div>
+<?php } ?>
 
 <form action="<?php echo plugin_page( 'config_edit' ) ?>" method="post">
 	<?php echo form_security_field( 'GaugeSupport_config' ); ?>
@@ -46,7 +54,6 @@ print_manage_menu( 'manage_plugin_page.php' );
 				<div class="table-responsive">
 					<table class="table table-bordered table-condensed table-striped">
 <?php
-	$t_plugin = plugin_get();
 	$t_configs = array_keys( $t_plugin->config() );
 	foreach( $t_configs as $t_config_id ) {
 		# Retrieve current config and convert array values to integer
