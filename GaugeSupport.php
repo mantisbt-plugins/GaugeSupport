@@ -106,6 +106,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 		$t_page = basename( $_SERVER['SCRIPT_FILENAME'] );
 		if( $this->mantisgraph_loaded && $t_page == 'view.php' ) {
 			$t_mantisgraph = plugin_get( self::MANTISGRAPH );
+			/** @var MantisGraphPlugin $t_mantisgraph */
 			$t_mantisgraph->include_chartjs();
 
 			echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
@@ -119,7 +120,10 @@ class GaugeSupportPlugin extends MantisPlugin {
 		return $this->mantisgraph_loaded;
 	}
 
-	function menuLinks($p_event) {
+	/**
+	 * @noinspection PhpUnused PhpUnusedParameterInspection
+	 */
+	function menuLinks( $p_event ) {
 		return array(
 			array(
 				'title' => plugin_lang_get( 'menu_link' ),
@@ -137,6 +141,8 @@ class GaugeSupportPlugin extends MantisPlugin {
 	 * @param int    $p_bug_id Bug ID
 	 *
 	 * @return array
+	 *
+	 * @noinspection PhpUnused PhpUnusedParameterInspection
 	 */
 	function issueVoteLink( $p_event, $p_bug_id ) {
 		if( $this->isVotingAllowed( $p_bug_id ) ) {
@@ -145,10 +151,13 @@ class GaugeSupportPlugin extends MantisPlugin {
 		return array();
 	}
 
-	function renderBugSnippet($p_event, $bugid) {
+	/**
+	 * @noinspection PhpUnused PhpUnusedParameterInspection
+	 */
+	function renderBugSnippet( $p_event, $bugid ) {
 		include plugin_file_path( 'gauge_form.php', $this->basename );
 	}
-	
+
 	function schema() {
 		require_once( 'install.php' );
 
@@ -201,9 +210,9 @@ class GaugeSupportPlugin extends MantisPlugin {
 			}
 		}
 
-		if( !empty( $t_where ) ) {
-			$t_where_clause = 'WHERE ' . implode( ' AND ', $t_where );
-		}
+		$t_where_clause = $t_where
+			? 'WHERE ' . implode( ' AND ', $t_where )
+			: '';
 
 		# Retrieve rankings from the database
 		$t_ratings_table = plugin_table( 'support_data' );
@@ -216,9 +225,9 @@ class GaugeSupportPlugin extends MantisPlugin {
 				avg(sd.rating) as avg_rating,
 				max(sd.rating) as highest_rating,
 				min(sd.rating) as lowest_rating
-			FROM {$t_ratings_table} sd
-			INNER JOIN {$t_bug_table} b ON sd.bugid = b.id
-			{$t_where_clause}
+			FROM $t_ratings_table sd
+			INNER JOIN $t_bug_table b ON sd.bugid = b.id
+			$t_where_clause
 			GROUP BY sd.bugid
 			ORDER BY sum(sd.rating) DESC, count(sd.rating) DESC, sd.bugid";
 		$t_result = db_query( $t_query, $t_param );

@@ -25,7 +25,10 @@ if(current_user_is_anonymous()){
 	return;
 }
 
-/** @var integer $bugid */
+/**
+ * @var GaugeSupportPlugin $t_plugin
+ * @var integer $bugid
+ */
 $t_plugin = plugin_get();
 if( !$t_plugin->isVotingAllowed( $bugid ) ) {
 	return;
@@ -40,18 +43,21 @@ $t_ratings = array(
 );
 
 $dbtable = plugin_table("support_data");
-$dbquery = "SELECT userid, rating FROM {$dbtable} WHERE bugid=$bugid";
+$dbquery = "SELECT userid, rating FROM $dbtable WHERE bugid=$bugid";
 $dboutput = db_query($dbquery);
 
 $supporters = array();
 $opponents = array();
+$data = array();
 $t_active_rating = 0;
 $t_acs = $t_aspu = 0;
 $t_stats = array_fill_keys( array_keys( $t_ratings ), 0 );
 
 if( db_num_rows( $dboutput ) ) {
-	# @TODO retrieving data should be done with MantisBT API
-	# not with ADOdb native methods
+	/**
+	 * @TODO retrieving data should be done with MantisBT API, not with ADOdb native methods
+	 * @var ADORecordSet $dboutput
+	 */
 	$data = $dboutput->GetArray();
 
 	foreach($data as $row) {
@@ -69,7 +75,7 @@ if( db_num_rows( $dboutput ) ) {
 		) {
 			$t_user = "<strong>$t_user</strong>";
 		}
-		array_push($type, $t_user );
+		$type[] = $t_user;
 
 		if( $row_uid == auth_get_current_user_id() ) {
 			$t_active_rating = (int)$row_rating;
@@ -124,7 +130,7 @@ $t_chart_values = json_encode( array_values( $t_stats ) );
 		<div id="gauge_rankings" class="widget-main no-padding table-responsive">
 			<table class="table table-bordered table-condensed table-striped">
 				<tr>
-					<th class="category" width="25%">
+					<th class="category width-25">
 						<?php echo plugin_lang_get( 'supporters' ); ?>
 					</th>
 					<td><?php echo $supporters ?></td>
