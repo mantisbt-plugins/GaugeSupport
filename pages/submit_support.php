@@ -49,4 +49,4 @@ if( $t_cast_vote ) {
 	$t_result = db_query( $t_query, $t_param );
 }
 
-print_successful_redirect( 'view.php?id=' . $f_bug_id );
+print_header_redirect( 'view.php?id=' . $f_bug_id );
