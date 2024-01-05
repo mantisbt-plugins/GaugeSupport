@@ -8,7 +8,15 @@ specification.
 
 --------------------------------------------------------------------------------
 
-## [Unreleased]
+## [2.6.1] - 2024-01-05
+
+### Fixed
+
+- Page redirections trigger a deprecation warning since MantisBT 2.26.0
+  [#39](https://github.com/mantisbt-plugins/GaugeSupport/issues/39)
+
+
+## [2.6.0] - 2023-04-23
 
 ### Added
 
@@ -140,11 +148,13 @@ specification.
 
 ### Added
 
-- Initial release by EvilRenegade
+- Initial release by @EvilRenegade
 
 
-[Unreleased]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.5.0...HEAD
+[Unreleased]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.6.1...HEAD
 
+[2.6.1]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.6.0....v2.6.1
+[2.6.0]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.5.0...v2.6.0
 [2.5.0]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.04....v2.5.0
 [2.04]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.03...v2.04
 [2.03]: https://github.com/mantisbt-plugins/GaugeSupport/compare/v2.02...v2.03
