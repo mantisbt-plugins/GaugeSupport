@@ -37,7 +37,7 @@ function install_convert_config_names() {
 	);
 
 	# Get config default values
-	$t_gaugesupport_plugin = new GaugeSupportPlugin(plugin_get_current());
+	$t_gaugesupport_plugin = new GaugeSupportPlugin( plugin_get_current() );
 	$t_default_values = $t_gaugesupport_plugin->config();
 
 	foreach( $t_config_map as $t_old => $t_new ) {
