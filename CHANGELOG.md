@@ -8,6 +8,14 @@ specification.
 
 --------------------------------------------------------------------------------
 
+## [2.6.2] - 2026-05-31
+
+### Fixed
+
+- Wrror when installing plugin from scratch
+  [#40](https://github.com/mantisbt-plugins/GaugeSupport/issues/40)
+
+
 ## [2.6.1] - 2024-01-05
 
 ### Fixed
