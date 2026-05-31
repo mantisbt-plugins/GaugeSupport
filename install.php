@@ -27,7 +27,7 @@
  * set the new one to the old's value and delete the old.
  *
  * @return int 2 if success
- *
+ * @noinspection PhpUnused
  */
 function install_convert_config_names() {
 	$t_config_map = array(
@@ -43,7 +43,7 @@ function install_convert_config_names() {
 	foreach( $t_config_map as $t_old => $t_new ) {
 		$t_value = plugin_config_get( $t_old, '' );
 
-		# Set the new value if different than default
+		# Set the new value if different from default
 		if( $t_value && isset( $t_default_values[$t_new] ) && $t_value != $t_default_values[$t_new] ) {
 			plugin_config_set( $t_new, $t_value );
 		}
