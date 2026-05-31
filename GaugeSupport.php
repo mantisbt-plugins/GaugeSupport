@@ -22,7 +22,7 @@
 
 class GaugeSupportPlugin extends MantisPlugin {
 
-	const VERSION = '2.6.1';
+	const VERSION = '2.6.2';
 
 	const MANTISGRAPH = 'MantisGraph';
 	const MANTISGRAPH_VERSION = '2.25.0';
