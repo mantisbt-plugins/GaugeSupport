@@ -41,7 +41,7 @@ function install_convert_config_names() {
 	$t_default_values = $t_gaugesupport_plugin->config();
 
 	foreach( $t_config_map as $t_old => $t_new ) {
-		$t_value = plugin_config_get( $t_old );
+		$t_value = plugin_config_get( $t_old, '' );
 
 		# Set the new value if different than default
 		if( $t_value && isset( $t_default_values[$t_new] ) && $t_value != $t_default_values[$t_new] ) {
