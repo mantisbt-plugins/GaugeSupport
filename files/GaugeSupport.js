@@ -1,7 +1,9 @@
 /* jshint -W097 */
 "use strict";
+/* global Chart */
+/* global jQuery */
 
-$(document).ready( function() {
+jQuery(document).ready( function() {
 
     $('#issue_gauge').each( function() {
         resizeCanvas();

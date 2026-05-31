@@ -44,6 +44,8 @@ class GaugeSupportPlugin extends MantisPlugin {
 		# MantisGraph required so we don't need to bundle chart.js ourselves
 		$this->uses = array(
 			self::MANTISGRAPH => self::MANTISGRAPH_VERSION,
+			'toto' => "1.0.1",
+			'tata' => "1.0.1",
 		);
 
 		$this->author = "Cas (based upon Charly Kiendl's work), Damien Regad";
@@ -62,6 +64,7 @@ class GaugeSupportPlugin extends MantisPlugin {
 	
 	function hooks() {
 		return array(
+			'EVENT_CORE_HEADERS' => 'resources2',
 			'EVENT_LAYOUT_RESOURCES' => 'resources',
 			'EVENT_MENU_MAIN' => 'menuLinks',
 			'EVENT_MENU_ISSUE' => 'issueVoteLink',
@@ -107,11 +110,19 @@ class GaugeSupportPlugin extends MantisPlugin {
 	function resources() {
 		$t_page = basename( $_SERVER['SCRIPT_FILENAME'] );
 		if( $this->mantisgraph_loaded && $t_page == 'view.php' ) {
+			//echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
+		}
+	}
+
+	function resources2() {
+		$t_page = basename( $_SERVER['SCRIPT_FILENAME'] );
+		if( $this->mantisgraph_loaded && $t_page == 'view.php' ) {
 			$t_mantisgraph = plugin_get( self::MANTISGRAPH );
 			/** @var MantisGraphPlugin $t_mantisgraph */
 			$t_mantisgraph->include_chartjs();
-
-			echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
+			require_js( [ plugin_file( "GaugeSupport.js" ) ] );
+			//echo "\t", '<script src="' . plugin_file( "GaugeSupport.js" ) . '"></script>', "\n";
+			//echo "<script>jQuery(function () {console.log('hello');};)</script>";
 		}
 	}
 

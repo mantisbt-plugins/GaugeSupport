@@ -12,7 +12,7 @@ specification.
 
 ### Fixed
 
-- Wrror when installing plugin from scratch
+- Error when installing plugin from scratch
   [#40](https://github.com/mantisbt-plugins/GaugeSupport/issues/40)
 
 
